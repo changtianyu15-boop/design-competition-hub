@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+data/competitions.xlsx
+# Netlify 构建时从 data/competitions.json 生成，避免仓库里两份数据
+static/competitions.json

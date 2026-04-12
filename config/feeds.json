@@ -1,0 +1,131 @@
+{
+  "include_demo": false,
+  "rss_feeds": [
+    {
+      "name": "优设 UISDC",
+      "url": "https://www.uisdc.com/feed",
+      "keyword_filter": ["设计", "大赛", "竞赛", "征集", "奖项", "比赛", "启动", "征集令", "截止"],
+      "region": "中国"
+    },
+    {
+      "name": "少数派",
+      "url": "https://sspai.com/feed",
+      "keyword_filter": ["设计", "UI", "界面", "大赛", "活动", "征集"],
+      "region": "中国"
+    },
+    {
+      "name": "谷德设计网 gooood",
+      "url": "https://www.gooood.cn/feed",
+      "keyword_filter": ["竞赛", "征集", "建筑", "景观", "设计", "方案", "奖"],
+      "region": "中国"
+    },
+    {
+      "name": "ArchDaily 中文",
+      "url": "https://www.archdaily.cn/feed",
+      "keyword_filter": ["竞赛", "征集", "建筑", "设计", "奖"],
+      "region": "中国"
+    },
+    {
+      "name": "设计癖 Digipi",
+      "url": "https://www.digipi.com/feed",
+      "keyword_filter": ["设计", "大赛", "竞赛", "征集", "奖", "创意"],
+      "region": "中国"
+    },
+    {
+      "name": "Dezeen",
+      "url": "https://www.dezeen.com/feed/",
+      "keyword_filter": ["design", "award", "competition", "contest", "call for", "prize", "winner"],
+      "region": "国际"
+    },
+    {
+      "name": "Designboom",
+      "url": "https://www.designboom.com/feed/",
+      "keyword_filter": ["design", "award", "competition", "contest", "call", "prize"],
+      "region": "国际"
+    },
+    {
+      "name": "It's Nice That",
+      "url": "https://www.itsnicethat.com/feed",
+      "keyword_filter": ["design", "award", "competition", "contest", "prize", "graduate"],
+      "region": "国际"
+    },
+    {
+      "name": "ArchDaily",
+      "url": "https://www.archdaily.com/feed/en/feed/",
+      "keyword_filter": ["competition", "award", "call", "entries", "design", "prize"],
+      "region": "国际"
+    },
+    {
+      "name": "AIGA Eye on Design",
+      "url": "https://eyeondesign.aiga.org/feed/",
+      "keyword_filter": ["design", "award", "competition", "contest", "prize"],
+      "region": "国际"
+    },
+    {
+      "name": "Communication Arts",
+      "url": "https://www.commarts.com/rss.xml",
+      "keyword_filter": ["design", "award", "competition", "annual", "winner"],
+      "region": "国际"
+    },
+    {
+      "name": "Smashing Magazine",
+      "url": "https://www.smashingmagazine.com/feed/",
+      "keyword_filter": ["design", "award", "competition", "contest"],
+      "region": "国际"
+    },
+    {
+      "name": "Creative Bloq",
+      "url": "https://www.creativebloq.com/feeds.xml",
+      "keyword_filter": ["design", "competition", "award"],
+      "region": "国际"
+    },
+    {
+      "name": "Design Week",
+      "url": "https://www.designweek.co.uk/feed/",
+      "keyword_filter": ["design", "award", "competition", "winner"],
+      "region": "国际"
+    },
+    {
+      "name": "Core77",
+      "url": "https://www.core77.com/feeds/news",
+      "keyword_filter": ["design", "award", "competition", "contest"],
+      "region": "国际"
+    },
+    {
+      "name": "Design Milk",
+      "url": "https://design-milk.com/feed",
+      "keyword_filter": ["design", "award", "competition", "contest"],
+      "region": "国际"
+    },
+    {
+      "name": "Yanko Design",
+      "url": "https://www.yankodesign.com/feed/",
+      "keyword_filter": ["design", "award", "competition", "contest", "call"],
+      "region": "国际"
+    },
+    {
+      "name": "Design Taxi",
+      "url": "https://designtaxi.com/feed/",
+      "keyword_filter": ["design", "award", "competition", "contest"],
+      "region": "国际"
+    }
+  ],
+  "json_feeds": [
+    {
+      "name": "未截止补充库（远期截稿）",
+      "path_or_url": "data/future_open_calls.json"
+    },
+    {
+      "name": "策展库 · 中国大陆（多品类）",
+      "path_or_url": "data/mainland_china_competitions.json"
+    },
+    {
+      "name": "策展库 · 国内外大赛",
+      "path_or_url": "data/curated_competitions.json"
+    },
+    {
+      "name": "自建比赛列表",
+      "path_or_url": "data/custom_competitions.json"
+    }
+  ]
+}

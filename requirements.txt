@@ -1,0 +1,12 @@
+# 本项目已改为「仅 Python 标准库」运行，无需 pip 安装依赖即可启动：
+#   python main.py
+#
+# 若你仍想用 FastAPI 版本，可自行安装（需要能访问 PyPI）：
+# fastapi==0.115.6
+# uvicorn[standard]==0.32.1
+# httpx==0.28.1
+# beautifulsoup4==4.12.3
+# pandas==2.2.3
+# openpyxl==3.1.5
+# pyyaml==6.0.2
+# feedparser==6.0.11

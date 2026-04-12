@@ -1,0 +1,10 @@
+# Netlify 只发布 static/；构建时把合并后的 JSON 拷进去，页面用 /competitions.json 读取。
+# 爬取与服务端 Excel 仅在本地 python main.py 时可用；线上「下载表格」为 CSV（Excel 可直接打开）。
+[build]
+  publish = "static"
+  command = "python3 scripts/prep_netlify_static.py || python scripts/prep_netlify_static.py"
+
+[[headers]]
+  for = "/competitions.json"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
