@@ -1031,6 +1031,23 @@
         gap: 0.4rem;
       }
 
+      .data-updated-chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 46px;
+        padding: 0.55rem 1rem;
+        border-radius: 999px;
+        font-family: var(--font-display);
+        font-size: 0.76rem;
+        font-weight: 800;
+        color: var(--clay-muted);
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(255, 255, 255, 0.92);
+        box-shadow:
+          6px 6px 14px rgba(160, 150, 180, 0.16),
+          -4px -4px 10px rgba(255, 255, 255, 0.96);
+      }
+
       .empty {
         text-align: center;
         padding: 3rem 1.5rem;
@@ -1152,9 +1169,7 @@
             </div>
           </div>
           <div class="nav-actions">
-            <button type="button" class="btn-clay btn-clay--primary" id="btnCrawl">
-              <span id="crawlLabel">重新爬取</span>
-            </button>
+            <div class="data-updated-chip" id="dataUpdated">数据更新时间：--</div>
             <button type="button" class="btn-clay btn-clay--secondary" id="btnDl">
               下载表格
             </button>
@@ -1287,7 +1302,7 @@
       const grid = document.getElementById("grid");
       const empty = document.getElementById("empty");
       const toast = document.getElementById("toast");
-      const btnCrawl = document.getElementById("btnCrawl");
+      const dataUpdated = document.getElementById("dataUpdated");
       const btnDl = document.getElementById("btnDl");
       const btnTrash = document.getElementById("btnTrash");
       const trashPanel = document.getElementById("trashPanel");
@@ -1295,7 +1310,6 @@
       const trashCount = document.getElementById("trashCount");
       const btnTrashClose = document.getElementById("btnTrashClose");
       const btnTrashEmpty = document.getElementById("btnTrashEmpty");
-      const crawlLabel = document.getElementById("crawlLabel");
       const q = document.getElementById("q");
       const fType = document.getElementById("fType");
       const fRegion = document.getElementById("fRegion");
@@ -1303,7 +1317,6 @@
       const hideExpired = document.getElementById("hideExpired");
       const favOnly = document.getElementById("favOnly");
       const moeAOnly = document.getElementById("moeAOnly");
-      const isLocalRuntime = ["localhost", "127.0.0.1"].includes(location.hostname);
 
       let all = [];
 
@@ -1418,15 +1431,6 @@
           return `${root}/${p}`;
         }
         return new URL(relPath, location.href).href;
-      }
-
-      if (!isLocalRuntime) {
-        // 线上仅展示与筛选，爬取在本地执行后再同步到线上。
-        btnCrawl.disabled = true;
-        btnCrawl.title = "线上已禁用爬取，请在本地运行后上传数据";
-        crawlLabel.textContent = "仅本地爬取";
-        btnCrawl.style.opacity = "0.55";
-        btnCrawl.style.cursor = "not-allowed";
       }
 
       /** 将数据源中的长类型名归并为少量大类，便于筛选与阅读 */
@@ -1650,6 +1654,21 @@
         document.getElementById("stFav").textContent = String(favN);
       }
 
+      function updateDataUpdatedLabel(list) {
+        const candidates = list
+          .map((x) => String(x.fetched_at || "").trim())
+          .filter((s) => s && s.toLowerCase() !== "manual");
+        if (!candidates.length) {
+          dataUpdated.textContent = "数据更新时间：--";
+          return;
+        }
+        const best = candidates
+          .map((s) => ({ raw: s, ts: Date.parse(s.replace(" UTC", "Z")) }))
+          .filter((x) => !Number.isNaN(x.ts))
+          .sort((a, b) => b.ts - a.ts)[0];
+        dataUpdated.textContent = `数据更新时间：${best ? best.raw : candidates[0]}`;
+      }
+
       function render() {
         favSet = readFavSet();
         trashMap = readTrashMap();
@@ -1816,6 +1835,7 @@
         allByKey = new Map(all.map((x) => [itemKey(x), x]));
         fillFilters(all);
         updateStats(all);
+        updateDataUpdatedLabel(all);
         render();
       }
 
@@ -1953,32 +1973,6 @@
           /* 静态托管无此接口 */
         }
         downloadCompetitionsCsv();
-      });
-
-      btnCrawl.addEventListener("click", async () => {
-        if (!isLocalRuntime) {
-          showToast("线上已禁用爬取：请在本地运行 python main.py 爬取后再上传到线上。");
-          return;
-        }
-        btnCrawl.disabled = true;
-        crawlLabel.innerHTML = '<span class="spinner"></span> 抓取中…';
-        try {
-          const res = await fetch(appUrl("api/crawl"), { method: "POST" });
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok) throw new Error(data.detail || res.statusText);
-          showToast(`完成：共 ${data.count} 条（已写入 Excel）`);
-          await load();
-        } catch (e) {
-          const msg = e.message || String(e);
-          const hint =
-            msg === "Failed to fetch" || msg.includes("404")
-              ? "静态网站无法执行爬取。请在本地运行 python main.py，点击「重新爬取」更新 data/competitions.json 后再上传。"
-              : msg;
-          showToast("失败：" + hint);
-        } finally {
-          btnCrawl.disabled = false;
-          crawlLabel.textContent = "重新爬取";
-        }
       });
 
       ["input", "change"].forEach((ev) => {
