@@ -742,7 +742,7 @@
         flex-direction: column;
         gap: 0.75rem;
         min-height: 220px;
-        padding: 1.35rem 3.35rem 1.2rem 1.3rem;
+        padding: 1.35rem 4.9rem 1.2rem 1.3rem;
         border-radius: var(--radius-card);
         background: rgba(255, 255, 255, 0.68);
         backdrop-filter: blur(18px);
@@ -875,21 +875,28 @@
         color: var(--clay-muted);
       }
 
-      .favorite-btn {
+      .card-actions {
         position: absolute;
         top: 0.85rem;
         right: 0.85rem;
         z-index: 4;
         display: inline-flex;
+        gap: 0.45rem;
+      }
+
+      .favorite-btn,
+      .delete-btn {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
+        display: inline-flex;
+        width: 2.25rem;
+        height: 2.25rem;
         padding: 0;
         border: none;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 1.15rem;
+        font-size: 1.02rem;
         line-height: 1;
         color: var(--clay-muted);
         background: rgba(255, 255, 255, 0.88);
@@ -903,12 +910,16 @@
           box-shadow 0.2s ease;
       }
 
-      .favorite-btn:hover {
+      .favorite-btn:hover,
+      .delete-btn:hover {
         transform: scale(1.08);
-        color: var(--clay-pink);
         box-shadow:
           8px 8px 18px rgba(219, 39, 119, 0.18),
           -4px -4px 12px rgba(255, 255, 255, 1);
+      }
+
+      .favorite-btn:hover {
+        color: var(--clay-pink);
       }
 
       .favorite-btn.is-on {
@@ -929,6 +940,95 @@
         box-shadow:
           0 0 0 3px rgba(124, 58, 237, 0.35),
           6px 6px 14px rgba(160, 150, 180, 0.2);
+      }
+
+      .delete-btn {
+        color: #7c2d12;
+      }
+
+      .delete-btn:hover {
+        color: #b91c1c;
+      }
+
+      .delete-btn:focus-visible {
+        outline: none;
+        box-shadow:
+          0 0 0 3px rgba(239, 68, 68, 0.35),
+          6px 6px 14px rgba(160, 150, 180, 0.2);
+      }
+
+      .trash-panel {
+        margin: 1rem 0 1.5rem;
+        padding: 1rem;
+        border-radius: var(--radius-panel);
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow-clay-card);
+      }
+
+      .trash-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .trash-title {
+        font-family: var(--font-display);
+        font-weight: 900;
+      }
+
+      .trash-tools {
+        display: inline-flex;
+        gap: 0.5rem;
+      }
+
+      .btn-mini {
+        border: none;
+        border-radius: 999px;
+        padding: 0.45rem 0.8rem;
+        cursor: pointer;
+        font-weight: 700;
+        background: var(--clay-input-bg);
+        box-shadow: var(--shadow-clay-pressed);
+      }
+
+      .btn-mini.danger {
+        color: #991b1b;
+      }
+
+      .trash-list {
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .trash-item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0.65rem 0.8rem;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.92);
+      }
+
+      .trash-item-title {
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+
+      .trash-item-meta {
+        color: var(--clay-muted);
+        font-size: 0.76rem;
+      }
+
+      .trash-item-actions {
+        display: inline-flex;
+        gap: 0.4rem;
       }
 
       .empty {
@@ -1058,6 +1158,9 @@
             <button type="button" class="btn-clay btn-clay--secondary" id="btnDl">
               下载表格
             </button>
+            <button type="button" class="btn-clay btn-clay--secondary" id="btnTrash">
+              回收站（<span id="trashCount">0</span>）
+            </button>
           </div>
         </div>
       </header>
@@ -1133,14 +1236,34 @@
                   <span class="clay-switch-sub">仅显示点了 ♥ 的比赛</span>
                 </span>
               </label>
+              <label class="clay-switch clay-switch--deadline">
+                <input type="checkbox" id="moeAOnly" class="clay-switch-input" />
+                <span class="clay-switch-track" aria-hidden="true"
+                  ><span class="clay-switch-thumb"></span></span>
+                <span class="clay-switch-text">
+                  <span class="clay-switch-kicker">A类</span>
+                  <span class="clay-switch-title">仅看教育部A类</span>
+                  <span class="clay-switch-sub">并在排序中优先展示A类竞赛</span>
+                </span>
+              </label>
             </div>
           </div>
           <p id="type-hint" class="toolbar-hint">
-            类型已合并为 6 大类；鼠标悬停卡片上的紫色类型标签可查看原始分类。收藏保存在本机浏览器，清除站点数据会丢失。
+            类型已合并为 6 大类；鼠标悬停卡片上的紫色类型标签可查看原始分类。收藏保存在本机浏览器，清除站点数据会丢失。A类依据高校常用竞赛目录关键赛事自动识别。
           </p>
         </div>
 
         <p class="section-label">赛事</p>
+        <section id="trashPanel" class="trash-panel" hidden>
+          <div class="trash-head">
+            <div class="trash-title">回收站</div>
+            <div class="trash-tools">
+              <button type="button" class="btn-mini" id="btnTrashClose">关闭</button>
+              <button type="button" class="btn-mini danger" id="btnTrashEmpty">清空回收站</button>
+            </div>
+          </div>
+          <div id="trashList" class="trash-list"></div>
+        </section>
         <div class="grid" id="grid"></div>
         <div class="empty" id="empty" hidden>暂无数据，请点击顶部「重新爬取」。</div>
       </main>
@@ -1166,6 +1289,12 @@
       const toast = document.getElementById("toast");
       const btnCrawl = document.getElementById("btnCrawl");
       const btnDl = document.getElementById("btnDl");
+      const btnTrash = document.getElementById("btnTrash");
+      const trashPanel = document.getElementById("trashPanel");
+      const trashList = document.getElementById("trashList");
+      const trashCount = document.getElementById("trashCount");
+      const btnTrashClose = document.getElementById("btnTrashClose");
+      const btnTrashEmpty = document.getElementById("btnTrashEmpty");
       const crawlLabel = document.getElementById("crawlLabel");
       const q = document.getElementById("q");
       const fType = document.getElementById("fType");
@@ -1173,11 +1302,14 @@
       const sortBy = document.getElementById("sortBy");
       const hideExpired = document.getElementById("hideExpired");
       const favOnly = document.getElementById("favOnly");
+      const moeAOnly = document.getElementById("moeAOnly");
       const isLocalRuntime = ["localhost", "127.0.0.1"].includes(location.hostname);
 
       let all = [];
 
       const LS_FAV = "design-competition-hub:favorites";
+      const LS_TRASH = "design-competition-hub:trash";
+      const LS_PURGED = "design-competition-hub:purged";
 
       function itemKey(x) {
         const u = (x.source_url || "").trim();
@@ -1200,9 +1332,69 @@
       }
 
       let favSet = readFavSet();
+      let allByKey = new Map();
+
+      function readTrashMap() {
+        try {
+          const raw = localStorage.getItem(LS_TRASH);
+          const obj = raw ? JSON.parse(raw) : {};
+          return obj && typeof obj === "object" ? obj : {};
+        } catch {
+          return {};
+        }
+      }
+
+      function readPurgedSet() {
+        try {
+          const raw = localStorage.getItem(LS_PURGED);
+          const arr = raw ? JSON.parse(raw) : [];
+          return new Set(Array.isArray(arr) ? arr : []);
+        } catch {
+          return new Set();
+        }
+      }
+
+      let trashMap = readTrashMap();
+      let purgedSet = readPurgedSet();
 
       function persistFavorites() {
         localStorage.setItem(LS_FAV, JSON.stringify([...favSet]));
+      }
+
+      function persistTrash() {
+        localStorage.setItem(LS_TRASH, JSON.stringify(trashMap));
+        localStorage.setItem(LS_PURGED, JSON.stringify([...purgedSet]));
+        trashCount.textContent = String(Object.keys(trashMap).length);
+      }
+
+      function renderTrashPanel() {
+        const rows = Object.entries(trashMap).sort((a, b) => {
+          const ta = Date.parse((a[1] && a[1]._deletedAt) || "") || 0;
+          const tb = Date.parse((b[1] && b[1]._deletedAt) || "") || 0;
+          return tb - ta;
+        });
+        trashCount.textContent = String(rows.length);
+        if (!rows.length) {
+          trashList.innerHTML = '<div class="trash-item-meta">回收站为空</div>';
+          return;
+        }
+        trashList.innerHTML = rows
+          .map(([key, x]) => {
+            const meta = `${x.source_name || "来源未知"} · ${x.deadline || "见官网"}`;
+            return `
+              <div class="trash-item" data-trash-key="${escapeHtml(encodeURIComponent(key))}">
+                <div>
+                  <div class="trash-item-title">${escapeHtml(x.title || "未命名")}</div>
+                  <div class="trash-item-meta">${escapeHtml(meta)}</div>
+                </div>
+                <div class="trash-item-actions">
+                  <button type="button" class="btn-mini restore">恢复</button>
+                  <button type="button" class="btn-mini danger purge">彻底删除</button>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
       }
 
       /** 云端爬取后端根地址；优先 meta，其次 window.__API_BASE__；留空则用当前页同源 */
@@ -1382,6 +1574,29 @@
         return d != null && d < 0;
       }
 
+      // 依据中国高等教育学会竞赛目录中常见设计类A类赛事关键词进行自动识别。
+      function isMoeAClassCompetition(x) {
+        const text = `${x.title || ""} ${x.source_name || ""}`.toLowerCase();
+        const rules = [
+          "全国大学生广告艺术大赛",
+          "中国大学生广告艺术节学院奖",
+          "两岸新锐设计竞赛",
+          "华灿奖",
+          "米兰设计周",
+          "未来设计师",
+          "ncda",
+          "全国高校数字艺术设计大赛",
+          "全国大学生工业设计大赛",
+          "中国好创意",
+          "全国数字艺术设计大赛",
+          "全国三维数字化创新设计大赛",
+          "全国高校bim毕业设计创新大赛",
+          "全国大学生花园设计建造竞赛",
+          "全国数字建筑创新应用大赛",
+        ];
+        return rules.some((k) => text.includes(k.toLowerCase()));
+      }
+
       function deadlineTag(ts) {
         const d = daysUntil(ts);
         if (d == null)
@@ -1437,12 +1652,17 @@
 
       function render() {
         favSet = readFavSet();
+        trashMap = readTrashMap();
+        purgedSet = readPurgedSet();
         const term = q.value.trim().toLowerCase();
         const t = fType.value;
         const r = fRegion.value;
         let list = all.filter((x) => {
+          const k = itemKey(x);
+          if (trashMap[k] || purgedSet.has(k)) return false;
           if (hideExpired.checked && isExpiredItem(x)) return false;
           if (favOnly.checked && !favSet.has(itemKey(x))) return false;
+          if (moeAOnly.checked && !isMoeAClassCompetition(x)) return false;
           if (t && simpleCompetitionType(x.competition_type) !== t) return false;
           if (r && x.region !== r) return false;
           if (!term) return true;
@@ -1452,6 +1672,9 @@
         const sort = sortBy.value;
         list = [...list].sort((a, b) => {
           if (sort === "title") return a.title.localeCompare(b.title, "zh-CN");
+          const aA = isMoeAClassCompetition(a);
+          const bA = isMoeAClassCompetition(b);
+          if (aA !== bA) return aA ? -1 : 1;
           const ea = isExpiredItem(a);
           const eb = isExpiredItem(b);
           if (ea !== eb) return ea ? 1 : -1;
@@ -1463,6 +1686,7 @@
         });
 
         grid.innerHTML = "";
+        renderTrashPanel();
         if (!list.length) {
           empty.hidden = false;
           empty.textContent = favOnly.checked
@@ -1480,10 +1704,14 @@
           const el = document.createElement("article");
           el.className = "card" + (expired ? " card-expired" : "");
           el.innerHTML = `
-            <button type="button" class="favorite-btn${isFav ? " is-on" : ""}" data-fav-key="${escapeHtml(encodeURIComponent(key))}" aria-pressed="${isFav ? "true" : "false"}" aria-label="${isFav ? "取消收藏" : "加入收藏"}" title="${isFav ? "取消收藏" : "收藏"}">${isFav ? "♥" : "♡"}</button>
+            <div class="card-actions">
+              <button type="button" class="favorite-btn${isFav ? " is-on" : ""}" data-fav-key="${escapeHtml(encodeURIComponent(key))}" aria-pressed="${isFav ? "true" : "false"}" aria-label="${isFav ? "取消收藏" : "加入收藏"}" title="${isFav ? "取消收藏" : "收藏"}">${isFav ? "♥" : "♡"}</button>
+              <button type="button" class="delete-btn" data-del-key="${escapeHtml(encodeURIComponent(key))}" aria-label="删除到回收站" title="删除到回收站">🗑</button>
+            </div>
             <div class="tags">
               <span class="tag type"></span>
               <span class="deadline-tag"></span>
+              ${isMoeAClassCompetition(x) ? '<span class="tag type">教育部A类</span>' : ""}
               <span class="tag">${escapeHtml(x.source_name || "")}</span>
             </div>
             <h2></h2>
@@ -1585,12 +1813,35 @@
         }
         all = await res.json();
         favSet = readFavSet();
+        allByKey = new Map(all.map((x) => [itemKey(x), x]));
         fillFilters(all);
         updateStats(all);
         render();
       }
 
       grid.addEventListener("click", (e) => {
+        const del = e.target.closest(".delete-btn");
+        if (del && grid.contains(del)) {
+          e.preventDefault();
+          e.stopPropagation();
+          let key;
+          try {
+            key = decodeURIComponent(del.getAttribute("data-del-key") || "");
+          } catch {
+            return;
+          }
+          if (!key) return;
+          const x = allByKey.get(key);
+          if (!x) return;
+          trashMap = readTrashMap();
+          purgedSet = readPurgedSet();
+          trashMap[key] = { ...x, _deletedAt: new Date().toISOString() };
+          purgedSet.delete(key);
+          persistTrash();
+          showToast("已移入回收站");
+          render();
+          return;
+        }
         const btn = e.target.closest(".favorite-btn");
         if (!btn || !grid.contains(btn)) return;
         e.preventDefault();
@@ -1626,10 +1877,61 @@
       });
 
       window.addEventListener("storage", (e) => {
-        if (e.key === LS_FAV) {
+        if (e.key === LS_FAV || e.key === LS_TRASH || e.key === LS_PURGED) {
           favSet = readFavSet();
+          trashMap = readTrashMap();
+          purgedSet = readPurgedSet();
           render();
           updateStats(all);
+        }
+      });
+
+      btnTrash.addEventListener("click", () => {
+        trashPanel.hidden = !trashPanel.hidden;
+        if (!trashPanel.hidden) renderTrashPanel();
+      });
+
+      btnTrashClose.addEventListener("click", () => {
+        trashPanel.hidden = true;
+      });
+
+      btnTrashEmpty.addEventListener("click", () => {
+        trashMap = {};
+        persistTrash();
+        renderTrashPanel();
+        showToast("回收站已清空");
+      });
+
+      trashList.addEventListener("click", (e) => {
+        const row = e.target.closest(".trash-item");
+        if (!row) return;
+        let key;
+        try {
+          key = decodeURIComponent(row.getAttribute("data-trash-key") || "");
+        } catch {
+          return;
+        }
+        if (!key) return;
+        if (e.target.closest(".restore")) {
+          trashMap = readTrashMap();
+          delete trashMap[key];
+          purgedSet = readPurgedSet();
+          purgedSet.delete(key);
+          persistTrash();
+          renderTrashPanel();
+          render();
+          showToast("已恢复");
+          return;
+        }
+        if (e.target.closest(".purge")) {
+          trashMap = readTrashMap();
+          delete trashMap[key];
+          purgedSet = readPurgedSet();
+          purgedSet.add(key);
+          persistTrash();
+          renderTrashPanel();
+          render();
+          showToast("已彻底删除");
         }
       });
 
@@ -1686,6 +1988,7 @@
         sortBy.addEventListener(ev, render);
         hideExpired.addEventListener(ev, render);
         favOnly.addEventListener(ev, render);
+        moeAOnly.addEventListener(ev, render);
       });
 
       load().catch((e) => {
