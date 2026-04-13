@@ -26,4 +26,10 @@ def run_all_scrapers() -> List[Competition]:
     existing = load_competitions()
     combined = merge_by_url(existing, merged)
     save_competitions(combined)
+    try:
+        from github_push import push_competitions_json_to_github_if_configured
+
+        push_competitions_json_to_github_if_configured()
+    except Exception:
+        pass
     return combined

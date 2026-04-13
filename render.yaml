@@ -1,0 +1,21 @@
+# Render.com：连接 GitHub 仓库后可用 Blueprint 导入本文件，或手动创建 Web Service。
+# 文档：https://render.com/docs/deploy-render-cli
+#
+# 部署后在 Dashboard → Environment 建议手动添加：
+#   HOST=0.0.0.0   （本文件已带；PORT 由 Render 注入，勿改）
+#   CORS_ALLOW_ORIGIN=https://changtianyu15-boop.github.io
+#     （你的 GitHub Pages 完整源，不要尾斜杠；也可用 * 测试但不建议生产）
+# 可选（爬完写回仓库，避免免费实例休眠丢数据）：
+#   GITHUB_TOKEN=ghp_xxx
+#   GITHUB_REPO=owner/design-competition-hub
+services:
+  - type: web
+    name: design-competition-hub
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: echo "stdlib only"
+    startCommand: python main.py
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
