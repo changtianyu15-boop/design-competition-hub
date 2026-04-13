@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F4F1FA" />
+    <!-- 静态托管（GitHub Pages）时：把 content 改成云端后端根地址，无尾斜杠，例如 https://xxx.onrender.com -->
+    <meta name="design-hub-api-base" content="" />
+    <title>设计比赛 · Clay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Nunito:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* —— Design tokens: High-Fidelity Claymorphism —— */
+      :root {
+        --clay-canvas: #f4f1fa;
+        --clay-foreground: #332f3a;
+        --clay-muted: #635f69;
+        --clay-accent: #7c3aed;
+        --clay-accent-light: #a78bfa;
+        --clay-pink: #db2777;
+        --clay-sky: #0ea5e9;
+        --clay-success: #10b981;
+        --clay-warning: #f59e0b;
+        --clay-card-bg: rgba(255, 255, 255, 0.72);
+        --clay-input-bg: #efebf5;
+        --font-display: "Nunito", system-ui, sans-serif;
+        --font-body: "DM Sans", system-ui, sans-serif;
+        --radius-pill: 60px;
+        --radius-hero: 48px;
+        --radius-card: 32px;
+        --radius-panel: 28px;
+        --radius-control: 20px;
+        --shadow-clay-deep:
+          30px 30px 60px #cdc6d9, -30px -30px 60px #ffffff,
+          inset 10px 10px 20px rgba(139, 92, 246, 0.05),
+          inset -10px -10px 20px rgba(255, 255, 255, 0.8);
+        --shadow-clay-card:
+          16px 16px 32px rgba(160, 150, 180, 0.22),
+          -10px -10px 24px rgba(255, 255, 255, 0.95),
+          inset 6px 6px 12px rgba(139, 92, 246, 0.04),
+          inset -6px -6px 12px rgba(255, 255, 255, 1);
+        --shadow-clay-card-hover:
+          22px 22px 44px rgba(139, 92, 246, 0.18),
+          -12px -12px 28px rgba(255, 255, 255, 1),
+          inset 6px 6px 12px rgba(139, 92, 246, 0.05),
+          inset -6px -6px 12px rgba(255, 255, 255, 1);
+        --shadow-clay-button:
+          12px 12px 24px rgba(139, 92, 246, 0.32),
+          -8px -8px 16px rgba(255, 255, 255, 0.45),
+          inset 4px 4px 8px rgba(255, 255, 255, 0.45),
+          inset -4px -4px 8px rgba(0, 0, 0, 0.08);
+        --shadow-clay-button-hover:
+          16px 18px 36px rgba(124, 58, 237, 0.35),
+          -10px -10px 22px rgba(255, 255, 255, 0.55),
+          inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+          inset -4px -4px 8px rgba(0, 0, 0, 0.06);
+        --shadow-clay-pressed:
+          inset 10px 10px 20px #d9d4e3, inset -10px -10px 20px #ffffff;
+        --shadow-clay-nav:
+          12px 12px 28px rgba(160, 150, 180, 0.18),
+          -8px -8px 20px rgba(255, 255, 255, 0.9),
+          inset 4px 4px 10px rgba(255, 255, 255, 0.7);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.625;
+        color: var(--clay-foreground);
+        background: var(--clay-canvas);
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+      }
+
+      /* Floating blobs */
+      .clay-blobs {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .clay-blob {
+        position: absolute;
+        width: min(60vh, 520px);
+        height: min(60vh, 520px);
+        border-radius: 50%;
+        filter: blur(72px);
+        opacity: 0.38;
+        will-change: transform;
+      }
+
+      .clay-blob--violet {
+        background: #8b5cf6;
+        top: -8%;
+        left: -12%;
+        animation: clay-float 10s ease-in-out infinite;
+      }
+
+      .clay-blob--pink {
+        background: #ec4899;
+        top: 18%;
+        right: -15%;
+        animation: clay-float-delayed 12s ease-in-out infinite;
+        animation-delay: -2s;
+      }
+
+      .clay-blob--sky {
+        background: var(--clay-sky);
+        bottom: -10%;
+        left: 20%;
+        animation: clay-float-slow 14s ease-in-out infinite;
+        animation-delay: -4s;
+      }
+
+      .clay-blob--emerald {
+        background: #34d399;
+        bottom: 25%;
+        right: -8%;
+        width: min(45vh, 400px);
+        height: min(45vh, 400px);
+        animation: clay-float 9s ease-in-out infinite;
+        animation-delay: -1s;
+      }
+
+      @keyframes clay-float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(12px, -22px) rotate(2deg);
+        }
+      }
+
+      @keyframes clay-float-delayed {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-16px, -18px) rotate(-2.5deg);
+        }
+      }
+
+      @keyframes clay-float-slow {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-10px, -28px) rotate(3deg);
+        }
+      }
+
+      @keyframes clay-breathe {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .clay-blob,
+        .stat,
+        .card,
+        .btn-clay,
+        .btn-clay--primary {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+        }
+        .clay-blob {
+          transform: none;
+        }
+      }
+
+      /* Layout shell */
+      .page-shell {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0.75rem;
+        z-index: 100;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 0.85rem 1.35rem;
+        border-radius: var(--radius-pill);
+        background: rgba(255, 255, 255, 0.58);
+        backdrop-filter: saturate(160%) blur(22px);
+        -webkit-backdrop-filter: saturate(160%) blur(22px);
+        box-shadow: var(--shadow-clay-nav);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .brand-orb {
+        width: 48px;
+        height: 48px;
+        border-radius: 22px;
+        background: linear-gradient(145deg, #c4b5fd 0%, #7c3aed 55%, #5b21b6 100%);
+        box-shadow: var(--shadow-clay-button);
+        flex-shrink: 0;
+      }
+
+      .brand-mark {
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--clay-accent);
+      }
+
+      .brand-title {
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        margin: 0;
+        line-height: 1.15;
+        color: var(--clay-foreground);
+      }
+
+      .nav-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        align-items: center;
+      }
+
+      .btn-clay {
+        font-family: var(--font-display);
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        min-height: 48px;
+        padding: 0 1.5rem;
+        border-radius: var(--radius-control);
+        transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.2s ease;
+      }
+
+      .btn-clay:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-clay-button-hover), 0 0 0 4px rgba(124, 58, 237, 0.28);
+      }
+
+      .btn-clay--primary {
+        color: #fff;
+        background: linear-gradient(145deg, var(--clay-accent-light) 0%, var(--clay-accent) 52%, #6d28d9 100%);
+        box-shadow: var(--shadow-clay-button);
+      }
+
+      .btn-clay--primary:hover:not(:disabled) {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-clay-button-hover);
+      }
+
+      .btn-clay--primary:active:not(:disabled) {
+        transform: scale(0.92) translateY(0);
+        box-shadow: var(--shadow-clay-pressed);
+      }
+
+      .btn-clay--secondary {
+        color: var(--clay-accent);
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: var(--shadow-clay-card);
+        border: 2px solid rgba(124, 58, 237, 0.12);
+      }
+
+      .btn-clay--secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-clay-card-hover);
+        border-color: rgba(124, 58, 237, 0.28);
+      }
+
+      .btn-clay--secondary:active {
+        transform: scale(0.94);
+        box-shadow: var(--shadow-clay-pressed);
+      }
+
+      .btn-clay:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 2rem 1.15rem 3rem;
+      }
+
+      .hero-panel {
+        position: relative;
+        padding: clamp(1.75rem, 4vw, 2.75rem);
+        border-radius: var(--radius-hero);
+        margin-bottom: 2rem;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: var(--shadow-clay-deep);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        overflow: hidden;
+      }
+
+      .hero-panel::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        right: -40px;
+        top: -50px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, rgba(236, 72, 153, 0.35), rgba(124, 58, 237, 0.25));
+        filter: blur(2px);
+        pointer-events: none;
+      }
+
+      /* 标题与正文共用同一版心，左对齐一致 */
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 40rem;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.125rem;
+      }
+
+      .hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5.2vw, 3.25rem);
+        font-weight: 900;
+        line-height: 1.12;
+        letter-spacing: -0.035em;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        text-wrap: balance;
+        background: linear-gradient(
+          120deg,
+          var(--clay-foreground) 0%,
+          var(--clay-foreground) 22%,
+          var(--clay-accent) 55%,
+          var(--clay-pink) 92%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-lead {
+        margin: 0;
+        width: 100%;
+        font-size: clamp(0.98rem, 2vw, 1.08rem);
+        font-weight: 500;
+        line-height: 1.7;
+        color: var(--clay-muted);
+      }
+
+      .section-label {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--clay-muted);
+        margin: 0 0 0.85rem 0.35rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      @media (min-width: 640px) {
+        .stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .stats {
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.15rem;
+        }
+      }
+
+      .stat {
+        position: relative;
+        padding: 1.25rem 1.2rem;
+        border-radius: var(--radius-card);
+        background: var(--clay-card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: var(--shadow-clay-card);
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        transition: transform 0.45s ease, box-shadow 0.45s ease;
+        animation: clay-breathe 6s ease-in-out infinite;
+      }
+
+      .stat:nth-child(2) {
+        animation-delay: -1.5s;
+      }
+      .stat:nth-child(3) {
+        animation-delay: -3s;
+      }
+      .stat:nth-child(4) {
+        animation-delay: -4.5s;
+      }
+
+      .stat:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-clay-card-hover);
+      }
+
+      .stat label {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--clay-muted);
+        margin-bottom: 0.4rem;
+      }
+
+      .stat strong {
+        font-family: var(--font-display);
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: var(--clay-foreground);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .toolbar-panel {
+        padding: 1.15rem 1.2rem;
+        border-radius: var(--radius-panel);
+        margin-bottom: 1.75rem;
+        background: rgba(255, 255, 255, 0.62);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: var(--shadow-clay-card);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .toolbar input,
+      .toolbar select {
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 500;
+        min-height: 52px;
+        min-width: min(100%, 200px);
+        padding: 0 1.1rem;
+        border: none;
+        border-radius: var(--radius-control);
+        color: var(--clay-foreground);
+        background: var(--clay-input-bg);
+        box-shadow: var(--shadow-clay-pressed);
+        outline: none;
+        transition: background 0.2s ease, box-shadow 0.25s ease;
+      }
+
+      .toolbar input:focus,
+      .toolbar select:focus {
+        background: #fff;
+        box-shadow:
+          var(--shadow-clay-pressed),
+          0 0 0 4px rgba(124, 58, 237, 0.18);
+      }
+
+      .toolbar input::placeholder {
+        color: var(--clay-muted);
+      }
+
+      .toolbar select {
+        cursor: pointer;
+        min-width: 150px;
+      }
+
+      .toolbar label.chk {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-display);
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--clay-muted);
+        cursor: pointer;
+        user-select: none;
+        padding: 0.4rem 0.5rem;
+        border-radius: var(--radius-control);
+        transition: background 0.2s ease;
+      }
+
+      .toolbar label.chk:hover {
+        background: rgba(124, 58, 237, 0.06);
+      }
+
+      .toolbar label.chk input {
+        width: 1.15rem;
+        height: 1.15rem;
+        accent-color: var(--clay-accent);
+        cursor: pointer;
+      }
+
+      .toolbar-hint {
+        width: 100%;
+        margin: 0.65rem 0 0;
+        padding: 0 0.15rem;
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        font-weight: 600;
+        line-height: 1.45;
+        color: var(--clay-muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+        gap: 1.15rem;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-height: 220px;
+        padding: 1.35rem 3.35rem 1.2rem 1.3rem;
+        border-radius: var(--radius-card);
+        background: rgba(255, 255, 255, 0.68);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: var(--shadow-clay-card);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        overflow: hidden;
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-clay-card-hover);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .tag {
+        font-family: var(--font-display);
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(239, 235, 245, 0.95);
+        color: var(--clay-muted);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 2px 2px 6px rgba(160, 150, 180, 0.12);
+      }
+
+      .tag.type {
+        background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+        color: #5b21b6;
+        border-color: rgba(167, 139, 250, 0.35);
+      }
+
+      .tag.deadline-soon {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        color: #b45309;
+      }
+
+      .tag.deadline-ok {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        color: #047857;
+      }
+
+      .tag.deadline-unknown {
+        background: var(--clay-input-bg);
+        color: var(--clay-muted);
+      }
+
+      .tag.deadline-expired {
+        background: linear-gradient(135deg, #e7e5ea 0%, #d6d3db 100%);
+        color: #4b5563;
+      }
+
+      .card h2 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.3;
+        margin: 0;
+        color: var(--clay-foreground);
+        position: relative;
+        z-index: 1;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1.55;
+        color: var(--clay-muted);
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+      }
+
+      .meta {
+        font-size: 0.78rem;
+        font-weight: 600;
+        line-height: 1.45;
+        color: var(--clay-muted);
+        position: relative;
+        z-index: 1;
+      }
+
+      .card a.link {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--clay-accent);
+        text-decoration: none;
+        word-break: break-all;
+        position: relative;
+        z-index: 1;
+        transition: color 0.15s ease;
+      }
+
+      .card a.link:hover {
+        color: var(--clay-pink);
+        text-decoration: underline;
+      }
+
+      .card.card-expired {
+        opacity: 0.78;
+        filter: saturate(0.65);
+      }
+
+      .card.card-expired:hover {
+        transform: translateY(-3px);
+      }
+
+      .card.card-expired h2,
+      .card.card-expired p {
+        color: var(--clay-muted);
+      }
+
+      .card.card-expired a.link {
+        color: var(--clay-muted);
+      }
+
+      .favorite-btn {
+        position: absolute;
+        top: 0.85rem;
+        right: 0.85rem;
+        z-index: 4;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.15rem;
+        line-height: 1;
+        color: var(--clay-muted);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow:
+          6px 6px 14px rgba(160, 150, 180, 0.2),
+          -4px -4px 10px rgba(255, 255, 255, 0.95),
+          inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+        transition:
+          transform 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .favorite-btn:hover {
+        transform: scale(1.08);
+        color: var(--clay-pink);
+        box-shadow:
+          8px 8px 18px rgba(219, 39, 119, 0.18),
+          -4px -4px 12px rgba(255, 255, 255, 1);
+      }
+
+      .favorite-btn.is-on {
+        color: #fff;
+        background: linear-gradient(145deg, #ec4899 0%, #db2777 100%);
+        box-shadow:
+          6px 6px 16px rgba(219, 39, 119, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      }
+
+      .favorite-btn.is-on:hover {
+        color: #fff;
+        filter: brightness(1.05);
+      }
+
+      .favorite-btn:focus-visible {
+        outline: none;
+        box-shadow:
+          0 0 0 3px rgba(124, 58, 237, 0.35),
+          6px 6px 14px rgba(160, 150, 180, 0.2);
+      }
+
+      .empty {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1rem;
+        color: var(--clay-muted);
+        border-radius: var(--radius-card);
+        background: rgba(255, 255, 255, 0.5);
+        border: 3px dashed rgba(124, 58, 237, 0.15);
+        box-shadow: var(--shadow-clay-pressed);
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(12px);
+        max-width: min(92vw, 380px);
+        padding: 1rem 1.35rem;
+        border-radius: var(--radius-panel);
+        font-family: var(--font-display);
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: var(--clay-foreground);
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: var(--shadow-clay-card-hover);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+        z-index: 200;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .spinner {
+        width: 1rem;
+        height: 1rem;
+        border: 3px solid rgba(255, 255, 255, 0.35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.65s linear infinite;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .site-footer {
+        position: relative;
+        z-index: 1;
+        margin-top: 2.5rem;
+        padding: 2.25rem 1.25rem 2.75rem;
+      }
+
+      .site-footer-card {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 1.5rem 1.5rem;
+        border-radius: var(--radius-hero);
+        text-align: center;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow-clay-card);
+        border: 1px solid rgba(255, 255, 255, 0.75);
+      }
+
+      .site-footer-inner {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1.65;
+        color: var(--clay-muted);
+      }
+
+      .site-footer-inner p {
+        margin: 0.3rem 0;
+      }
+
+      .site-footer-inner a {
+        font-weight: 700;
+        color: var(--clay-accent);
+        text-decoration: none;
+      }
+
+      .site-footer-inner a:hover {
+        color: var(--clay-pink);
+        text-decoration: underline;
+      }
+
+      @media (max-width: 640px) {
+        .nav-actions .btn-clay {
+          flex: 1;
+          min-width: calc(50% - 0.35rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clay-blobs" aria-hidden="true">
+      <div class="clay-blob clay-blob--violet"></div>
+      <div class="clay-blob clay-blob--pink"></div>
+      <div class="clay-blob clay-blob--sky"></div>
+      <div class="clay-blob clay-blob--emerald"></div>
+    </div>
+
+    <div class="page-shell">
+      <header class="nav">
+        <div class="nav-inner">
+          <div class="brand">
+            <div class="brand-orb" aria-hidden="true"></div>
+            <div>
+              <span class="brand-mark">Design</span>
+              <p class="brand-title">比赛聚合</p>
+            </div>
+          </div>
+          <div class="nav-actions">
+            <button type="button" class="btn-clay btn-clay--primary" id="btnCrawl">
+              <span id="crawlLabel">重新爬取</span>
+            </button>
+            <button type="button" class="btn-clay btn-clay--secondary" id="btnDl">
+              下载表格
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="wrap">
+        <section class="hero-panel hero" aria-labelledby="hero-title">
+          <div class="hero-inner">
+            <h1 id="hero-title">设计比赛，一目了然。</h1>
+            <p class="hero-lead">
+              聚合国际与中文资讯 RSS、策展库与自建数据；本地运行时可导出 Excel，部署到静态托管时导出
+              CSV（可用 Excel 打开）。大陆赛事多为官网动态页、公开 RSS 较少，因此以可编辑数据为主，并辅以中文设计媒体订阅。
+            </p>
+          </div>
+        </section>
+
+        <p class="section-label">概览</p>
+        <section class="stats" aria-label="统计">
+          <div class="stat">
+            <label>收录条数</label>
+            <strong id="stTotal">0</strong>
+          </div>
+          <div class="stat">
+            <label>30 天内截止</label>
+            <strong id="stSoon">0</strong>
+          </div>
+          <div class="stat">
+            <label>来源种类</label>
+            <strong id="stSources">0</strong>
+          </div>
+          <div class="stat">
+            <label>已过期</label>
+            <strong id="stExpired">0</strong>
+          </div>
+          <div class="stat">
+            <label>已收藏</label>
+            <strong id="stFav">0</strong>
+          </div>
+        </section>
+
+        <p class="section-label">筛选与排序</p>
+        <div class="toolbar-panel">
+          <div class="toolbar">
+            <input type="search" id="q" placeholder="搜索标题、主办方、简介…" />
+            <select id="fType" aria-describedby="type-hint">
+              <option value="">全部类型</option>
+            </select>
+            <select id="fRegion">
+              <option value="">全部地区</option>
+            </select>
+            <select id="sortBy">
+              <option value="deadline">按截止时间升序</option>
+              <option value="deadline_desc">按截止时间降序</option>
+              <option value="title">按标题</option>
+            </select>
+            <label class="chk">
+              <input type="checkbox" id="hideExpired" />
+              仅显示未截止
+            </label>
+            <label class="chk">
+              <input type="checkbox" id="favOnly" />
+              仅看收藏
+            </label>
+          </div>
+          <p id="type-hint" class="toolbar-hint">
+            类型已合并为 6 大类；鼠标悬停卡片上的紫色类型标签可查看原始分类。收藏保存在本机浏览器，清除站点数据会丢失。
+          </p>
+        </div>
+
+        <p class="section-label">赛事</p>
+        <div class="grid" id="grid"></div>
+        <div class="empty" id="empty" hidden>暂无数据，请点击顶部「重新爬取」。</div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer-card">
+          <div class="site-footer-inner">
+            <p>@ Copyright Tany</p>
+            <p>版权归 Tany Chang 所有。中文名：常天宇。</p>
+            <p>
+              联系方式：<a href="mailto:1765981792@qq.com">1765981792@qq.com</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const grid = document.getElementById("grid");
+      const empty = document.getElementById("empty");
+      const toast = document.getElementById("toast");
+      const btnCrawl = document.getElementById("btnCrawl");
+      const btnDl = document.getElementById("btnDl");
+      const crawlLabel = document.getElementById("crawlLabel");
+      const q = document.getElementById("q");
+      const fType = document.getElementById("fType");
+      const fRegion = document.getElementById("fRegion");
+      const sortBy = document.getElementById("sortBy");
+      const hideExpired = document.getElementById("hideExpired");
+      const favOnly = document.getElementById("favOnly");
+
+      let all = [];
+
+      const LS_FAV = "design-competition-hub:favorites";
+
+      function itemKey(x) {
+        const u = (x.source_url || "").trim();
+        if (u) return "u:" + u;
+        return (
+          "t:" +
+          [x.title || "", x.source_name || "", x.deadline || "", x.organizer || ""].join("\x1f")
+        );
+      }
+
+      function readFavSet() {
+        try {
+          const raw = localStorage.getItem(LS_FAV);
+          if (!raw) return new Set();
+          const arr = JSON.parse(raw);
+          return new Set(Array.isArray(arr) ? arr : []);
+        } catch {
+          return new Set();
+        }
+      }
+
+      let favSet = readFavSet();
+
+      function persistFavorites() {
+        localStorage.setItem(LS_FAV, JSON.stringify([...favSet]));
+      }
+
+      /** 云端爬取后端根地址；优先 meta，其次 window.__API_BASE__；留空则用当前页同源 */
+      function apiRoot() {
+        const m = document.querySelector('meta[name="design-hub-api-base"]');
+        const fromMeta = m && m.getAttribute("content");
+        if (fromMeta && String(fromMeta).trim()) {
+          return String(fromMeta).trim().replace(/\/$/, "");
+        }
+        if (typeof window.__API_BASE__ === "string" && window.__API_BASE__.trim()) {
+          return window.__API_BASE__.trim().replace(/\/$/, "");
+        }
+        return "";
+      }
+
+      /** 接口或静态 JSON 的完整 URL（静态站可指向 Render 等上的 Python 服务） */
+      function appUrl(relPath) {
+        const root = apiRoot();
+        if (root) {
+          const p = relPath.replace(/^\//, "");
+          return `${root}/${p}`;
+        }
+        return new URL(relPath, location.href).href;
+      }
+
+      /** 将数据源中的长类型名归并为少量大类，便于筛选与阅读 */
+      function simpleCompetitionType(raw) {
+        const s = (raw || "").trim();
+        if (!s || s === "未分类") return "其他";
+        const lower = s.toLowerCase();
+
+        const rules = [
+          {
+            name: "创新创业",
+            keys: [
+              "创新",
+              "创业",
+              "创客",
+              "挑战杯",
+              "互联网+",
+              "互联网＋",
+              "服务外包",
+              "三创",
+              "外包",
+              "红旅",
+              "创青春",
+            ],
+          },
+          {
+            name: "数字媒体",
+            keys: [
+              "数字",
+              "交互",
+              "ui",
+              "ux",
+              "界面",
+              "动画",
+              "游戏",
+              "数媒",
+              "影像",
+              "摄影",
+              "可视化",
+              "智能车",
+              "软件",
+              "移动应用",
+              "服务设计",
+              "用户体验",
+              "智慧城市",
+              "swift",
+              "bim",
+              "信息可视化",
+            ],
+          },
+          {
+            name: "空间环境",
+            keys: [
+              "室内",
+              "建筑",
+              "景观",
+              "园林",
+              "环艺",
+              "城乡",
+              "乡村",
+              "文旅",
+              "人居",
+              "城市规划",
+              "城市设计",
+              "更新",
+              "照明",
+              "雕塑",
+              "公共艺术",
+              "绿色建筑",
+              "展陈",
+              "空间",
+              "环境设计",
+            ],
+          },
+          {
+            name: "产品与工业",
+            keys: [
+              "产品",
+              "工业",
+              "概念",
+              "cmf",
+              "家居",
+              "家具",
+              "汽车",
+              "交通",
+              "珠宝",
+              "时装",
+              "服装",
+              "时尚",
+              "穿戴",
+              "装备",
+              "机械",
+              "可持续",
+              "交通工具",
+            ],
+          },
+          {
+            name: "平面设计",
+            keys: [
+              "平面",
+              "视觉",
+              "品牌",
+              "传达",
+              "包装",
+              "字体",
+              "广告",
+              "插画",
+              "绘本",
+              "图形",
+              "文创",
+              "漫画",
+              "标志",
+            ],
+          },
+        ];
+
+        for (const r of rules) {
+          if (r.keys.some((k) => s.includes(k) || lower.includes(k))) return r.name;
+        }
+        if (s.includes("综合") || s.includes("多学科")) return "综合";
+        return "其他";
+      }
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3200);
+      }
+
+      function parseDate(s) {
+        if (!s || s === "见官网") return null;
+        const t = Date.parse(s);
+        return Number.isNaN(t) ? null : t;
+      }
+
+      function daysUntil(ts) {
+        if (ts == null) return null;
+        const d = Math.ceil((ts - Date.now()) / 86400000);
+        return d;
+      }
+
+      function isExpiredItem(x) {
+        const ts = parseDate(x.deadline);
+        const d = daysUntil(ts);
+        return d != null && d < 0;
+      }
+
+      function deadlineTag(ts) {
+        const d = daysUntil(ts);
+        if (d == null)
+          return { cls: "tag deadline-unknown", text: "截止待定 / 见官网" };
+        if (d < 0) return { cls: "tag deadline-expired", text: "已过期" };
+        if (d <= 7) return { cls: "tag deadline-soon", text: `${d} 天内截止` };
+        if (d <= 30) return { cls: "tag deadline-ok", text: `${d} 天内截止` };
+        return { cls: "tag", text: `剩余约 ${d} 天` };
+      }
+
+      function fillFilters(list) {
+        const types = [...new Set(list.map((x) => simpleCompetitionType(x.competition_type)))].sort(
+          (a, b) => a.localeCompare(b, "zh-CN")
+        );
+        const regions = [...new Set(list.map((x) => x.region).filter(Boolean))].sort();
+        const keepType = fType.value;
+        const keepReg = fRegion.value;
+        fType.innerHTML = '<option value="">全部类型</option>';
+        types.forEach((t) => {
+          const o = document.createElement("option");
+          o.value = t;
+          o.textContent = t;
+          fType.appendChild(o);
+        });
+        fRegion.innerHTML = '<option value="">全部地区</option>';
+        regions.forEach((t) => {
+          const o = document.createElement("option");
+          o.value = t;
+          o.textContent = t;
+          fRegion.appendChild(o);
+        });
+        if ([...fType.options].some((o) => o.value === keepType)) fType.value = keepType;
+        if ([...fRegion.options].some((o) => o.value === keepReg)) fRegion.value = keepReg;
+      }
+
+      function updateStats(list) {
+        const sources = new Set(list.map((x) => x.source_name));
+        let soon = 0;
+        let expired = 0;
+        list.forEach((x) => {
+          const ts = parseDate(x.deadline);
+          const d = daysUntil(ts);
+          if (d != null && d < 0) expired++;
+          if (d != null && d >= 0 && d <= 30) soon++;
+        });
+        document.getElementById("stTotal").textContent = String(list.length);
+        document.getElementById("stSoon").textContent = String(soon);
+        document.getElementById("stSources").textContent = String(sources.size);
+        document.getElementById("stExpired").textContent = String(expired);
+        const favN = all.filter((x) => favSet.has(itemKey(x))).length;
+        document.getElementById("stFav").textContent = String(favN);
+      }
+
+      function render() {
+        favSet = readFavSet();
+        const term = q.value.trim().toLowerCase();
+        const t = fType.value;
+        const r = fRegion.value;
+        let list = all.filter((x) => {
+          if (hideExpired.checked && isExpiredItem(x)) return false;
+          if (favOnly.checked && !favSet.has(itemKey(x))) return false;
+          if (t && simpleCompetitionType(x.competition_type) !== t) return false;
+          if (r && x.region !== r) return false;
+          if (!term) return true;
+          const blob = `${x.title} ${x.organizer} ${x.description}`.toLowerCase();
+          return blob.includes(term);
+        });
+        const sort = sortBy.value;
+        list = [...list].sort((a, b) => {
+          if (sort === "title") return a.title.localeCompare(b.title, "zh-CN");
+          const ea = isExpiredItem(a);
+          const eb = isExpiredItem(b);
+          if (ea !== eb) return ea ? 1 : -1;
+          const da = parseDate(a.deadline);
+          const db = parseDate(b.deadline);
+          const fa = da == null ? Infinity : da;
+          const fb = db == null ? Infinity : db;
+          return sort === "deadline_desc" ? fb - fa : fa - fb;
+        });
+
+        grid.innerHTML = "";
+        if (!list.length) {
+          empty.hidden = false;
+          empty.textContent = favOnly.checked
+            ? "暂无收藏的赛事，点击卡片右上角 ♡ 即可收藏。"
+            : "暂无数据，请点击顶部「重新爬取」。";
+          return;
+        }
+        empty.hidden = true;
+        list.forEach((x) => {
+          const ts = parseDate(x.deadline);
+          const tag = deadlineTag(ts);
+          const expired = isExpiredItem(x);
+          const key = itemKey(x);
+          const isFav = favSet.has(key);
+          const el = document.createElement("article");
+          el.className = "card" + (expired ? " card-expired" : "");
+          el.innerHTML = `
+            <button type="button" class="favorite-btn${isFav ? " is-on" : ""}" data-fav-key="${escapeHtml(encodeURIComponent(key))}" aria-pressed="${isFav ? "true" : "false"}" aria-label="${isFav ? "取消收藏" : "加入收藏"}" title="${isFav ? "取消收藏" : "收藏"}">${isFav ? "♥" : "♡"}</button>
+            <div class="tags">
+              <span class="tag type"></span>
+              <span class="deadline-tag"></span>
+              <span class="tag">${escapeHtml(x.source_name || "")}</span>
+            </div>
+            <h2></h2>
+            <p></p>
+            <div class="meta"></div>
+            <a class="link" target="_blank" rel="noopener"></a>
+          `;
+          const typeEl = el.querySelector(".type");
+          const simple = simpleCompetitionType(x.competition_type);
+          typeEl.textContent = simple;
+          const orig = (x.competition_type || "").trim();
+          if (orig && orig !== simple) {
+            typeEl.title = "原始分类：" + orig;
+          } else {
+            typeEl.title = "";
+          }
+          const dt = el.querySelector(".deadline-tag");
+          dt.className = "deadline-tag " + tag.cls;
+          dt.textContent = `截止：${escapeHtml(x.deadline || "")} · ${tag.text}`;
+          el.querySelector("h2").textContent = x.title;
+          el.querySelector("p").textContent = x.description || "（无简介）";
+          const meta = el.querySelector(".meta");
+          meta.innerHTML = `${escapeHtml(x.organizer || "主办方未知")}${
+            x.region ? " · " + escapeHtml(x.region) : ""
+          }${x.prize ? "<br/>奖项：" + escapeHtml(x.prize) : ""}`;
+          const a = el.querySelector("a.link");
+          a.href = x.source_url || "#";
+          a.textContent = x.source_url || "";
+          grid.appendChild(el);
+        });
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function csvEscapeCell(s) {
+        const t = String(s ?? "").replace(/"/g, '""');
+        if (/[",\n\r]/.test(t)) return `"${t}"`;
+        return t;
+      }
+
+      function downloadCompetitionsCsv() {
+        if (!all.length) {
+          showToast("暂无数据");
+          return;
+        }
+        const headers = [
+          "比赛名称",
+          "类型(简化)",
+          "类型(原始)",
+          "截止时间",
+          "主办方",
+          "地区",
+          "奖项/奖金",
+          "来源站点",
+          "详情链接",
+          "简介",
+          "抓取时间",
+        ];
+        const lines = [headers.join(",")];
+        for (const x of all) {
+          const row = [
+            x.title,
+            simpleCompetitionType(x.competition_type),
+            x.competition_type,
+            x.deadline,
+            x.organizer,
+            x.region,
+            x.prize,
+            x.source_name,
+            x.source_url,
+            x.description,
+            x.fetched_at,
+          ].map(csvEscapeCell);
+          lines.push(row.join(","));
+        }
+        const blob = new Blob(["\ufeff" + lines.join("\n")], {
+          type: "text/csv;charset=utf-8",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "design-competitions.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("已下载 CSV（可用 Excel 打开）");
+      }
+
+      async function load() {
+        let res = await fetch(appUrl("api/competitions")).catch(() => null);
+        if (!res || !res.ok) {
+          res = await fetch(appUrl("competitions.json"));
+          if (!res.ok) throw new Error("无法加载比赛数据");
+        }
+        all = await res.json();
+        favSet = readFavSet();
+        fillFilters(all);
+        updateStats(all);
+        render();
+      }
+
+      grid.addEventListener("click", (e) => {
+        const btn = e.target.closest(".favorite-btn");
+        if (!btn || !grid.contains(btn)) return;
+        e.preventDefault();
+        e.stopPropagation();
+        let key;
+        try {
+          key = decodeURIComponent(btn.getAttribute("data-fav-key") || "");
+        } catch {
+          return;
+        }
+        if (!key) return;
+        favSet = readFavSet();
+        if (favSet.has(key)) {
+          favSet.delete(key);
+          btn.classList.remove("is-on");
+          btn.textContent = "♡";
+          btn.setAttribute("aria-pressed", "false");
+          btn.setAttribute("aria-label", "加入收藏");
+          btn.title = "收藏";
+          showToast("已取消收藏");
+        } else {
+          favSet.add(key);
+          btn.classList.add("is-on");
+          btn.textContent = "♥";
+          btn.setAttribute("aria-pressed", "true");
+          btn.setAttribute("aria-label", "取消收藏");
+          btn.title = "取消收藏";
+          showToast("已加入收藏");
+        }
+        persistFavorites();
+        updateStats(all);
+        if (favOnly.checked) render();
+      });
+
+      window.addEventListener("storage", (e) => {
+        if (e.key === LS_FAV) {
+          favSet = readFavSet();
+          render();
+          updateStats(all);
+        }
+      });
+
+      btnDl.addEventListener("click", async () => {
+        try {
+          const res = await fetch(appUrl("api/download/excel"));
+          if (res.ok) {
+            const blob = await res.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "design-competitions.xlsx";
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast("已下载 Excel");
+            return;
+          }
+        } catch (_) {
+          /* 静态托管无此接口 */
+        }
+        downloadCompetitionsCsv();
+      });
+
+      btnCrawl.addEventListener("click", async () => {
+        btnCrawl.disabled = true;
+        crawlLabel.innerHTML = '<span class="spinner"></span> 抓取中…';
+        try {
+          const res = await fetch(appUrl("api/crawl"), { method: "POST" });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.detail || res.statusText);
+          showToast(`完成：共 ${data.count} 条（已写入 Excel）`);
+          await load();
+        } catch (e) {
+          const msg = e.message || String(e);
+          const hint =
+            msg === "Failed to fetch" || msg.includes("404")
+              ? "静态网站无法执行爬取。请在本地运行 python main.py，点击「重新爬取」更新 data/competitions.json 后重新部署。"
+              : msg;
+          showToast("失败：" + hint);
+        } finally {
+          btnCrawl.disabled = false;
+          crawlLabel.textContent = "重新爬取";
+        }
+      });
+
+      ["input", "change"].forEach((ev) => {
+        q.addEventListener(ev, render);
+        fType.addEventListener(ev, render);
+        fRegion.addEventListener(ev, render);
+        sortBy.addEventListener(ev, render);
+        hideExpired.addEventListener(ev, render);
+        favOnly.addEventListener(ev, render);
+      });
+
+      load().catch((e) => {
+        showToast("加载失败：" + (e.message || e));
+        empty.textContent = "无法加载数据，请确认已部署 competitions.json 或本地已启动 python main.py。";
+        empty.hidden = false;
+      });
+    </script>
+  </body>
+</html>
