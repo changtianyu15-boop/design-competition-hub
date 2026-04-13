@@ -542,30 +542,181 @@
         min-width: 150px;
       }
 
-      .toolbar label.chk {
+      /* —— 快捷筛选：Clay 开关（未截止 / 收藏）—— */
+      .toolbar-quick {
+        flex: 1 1 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 0.85rem;
+        margin-top: 0.35rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.72);
+      }
+
+      .clay-switch {
+        position: relative;
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        font-family: var(--font-display);
-        font-size: 0.85rem;
-        font-weight: 800;
-        color: var(--clay-muted);
+        gap: 0.75rem;
         cursor: pointer;
         user-select: none;
-        padding: 0.4rem 0.5rem;
-        border-radius: var(--radius-control);
-        transition: background 0.2s ease;
+        padding: 0.55rem 1rem 0.55rem 0.65rem;
+        border-radius: var(--radius-pill);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.92) 0%,
+          rgba(247, 244, 252, 0.75) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.95);
+        box-shadow:
+          8px 8px 20px rgba(160, 150, 180, 0.14),
+          -6px -6px 16px rgba(255, 255, 255, 0.95),
+          inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+        transition:
+          transform 0.22s ease,
+          box-shadow 0.28s ease,
+          border-color 0.2s ease;
       }
 
-      .toolbar label.chk:hover {
-        background: rgba(124, 58, 237, 0.06);
+      .clay-switch:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          12px 14px 28px rgba(139, 92, 246, 0.12),
+          -6px -6px 18px rgba(255, 255, 255, 1),
+          inset 1px 1px 2px rgba(255, 255, 255, 1);
+        border-color: rgba(167, 139, 250, 0.35);
       }
 
-      .toolbar label.chk input {
-        width: 1.15rem;
-        height: 1.15rem;
-        accent-color: var(--clay-accent);
-        cursor: pointer;
+      .clay-switch:active {
+        transform: translateY(0);
+      }
+
+      .clay-switch-input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        opacity: 0;
+      }
+
+      .clay-switch-input:focus-visible + .clay-switch-track {
+        outline: none;
+        box-shadow:
+          inset 3px 3px 10px rgba(180, 170, 200, 0.22),
+          inset -2px -2px 6px rgba(255, 255, 255, 0.85),
+          0 0 0 3px rgba(124, 58, 237, 0.35);
+      }
+
+      .clay-switch-track {
+        position: relative;
+        width: 3.1rem;
+        height: 1.72rem;
+        flex-shrink: 0;
+        border-radius: 999px;
+        background: var(--clay-input-bg);
+        box-shadow:
+          inset 4px 4px 10px rgba(180, 170, 200, 0.28),
+          inset -3px -3px 8px rgba(255, 255, 255, 0.88);
+        transition:
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .clay-switch-thumb {
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        width: 1.28rem;
+        height: 1.28rem;
+        border-radius: 50%;
+        background: linear-gradient(155deg, #ffffff 0%, #f0ebf7 55%, #e8e2f2 100%);
+        box-shadow:
+          4px 4px 10px rgba(150, 140, 175, 0.32),
+          -2px -2px 6px rgba(255, 255, 255, 0.98),
+          inset 0 1px 1px rgba(255, 255, 255, 0.9);
+        transform: translateY(-50%);
+        transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .clay-switch-input:checked + .clay-switch-track .clay-switch-thumb {
+        transform: translate(1.38rem, -50%);
+      }
+
+      .clay-switch--deadline .clay-switch-input:checked + .clay-switch-track {
+        background: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 52%, #6d28d9 100%);
+        box-shadow:
+          inset 2px 2px 8px rgba(91, 33, 182, 0.45),
+          0 0 18px rgba(124, 58, 237, 0.28);
+      }
+
+      .clay-switch--deadline .clay-switch-input:checked + .clay-switch-track .clay-switch-thumb {
+        background: linear-gradient(155deg, #faf5ff 0%, #ede9fe 100%);
+        box-shadow:
+          3px 3px 8px rgba(91, 33, 182, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      }
+
+      .clay-switch--fav .clay-switch-input:checked + .clay-switch-track {
+        background: linear-gradient(135deg, #f9a8d4 0%, #ec4899 48%, #db2777 100%);
+        box-shadow:
+          inset 2px 2px 8px rgba(190, 24, 93, 0.4),
+          0 0 18px rgba(236, 72, 153, 0.3);
+      }
+
+      .clay-switch--fav .clay-switch-input:checked + .clay-switch-track .clay-switch-thumb {
+        background: linear-gradient(155deg, #fff 0%, #fce7f3 100%);
+        box-shadow:
+          3px 3px 8px rgba(190, 24, 93, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .clay-switch-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        min-width: 0;
+      }
+
+      .clay-switch-kicker {
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--clay-muted);
+        opacity: 0.85;
+      }
+
+      .clay-switch-title {
+        font-family: var(--font-display);
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--clay-foreground);
+        line-height: 1.2;
+      }
+
+      .clay-switch-sub {
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--clay-muted);
+        line-height: 1.35;
+        max-width: 11rem;
+      }
+
+      .clay-switch:has(.clay-switch-input:checked) .clay-switch-kicker {
+        color: var(--clay-accent);
+      }
+
+      .clay-switch--fav:has(.clay-switch-input:checked) .clay-switch-kicker {
+        color: var(--clay-pink);
       }
 
       .toolbar-hint {
@@ -961,14 +1112,28 @@
               <option value="deadline_desc">按截止时间降序</option>
               <option value="title">按标题</option>
             </select>
-            <label class="chk">
-              <input type="checkbox" id="hideExpired" />
-              仅显示未截止
-            </label>
-            <label class="chk">
-              <input type="checkbox" id="favOnly" />
-              仅看收藏
-            </label>
+            <div class="toolbar-quick" role="group" aria-label="快捷筛选">
+              <label class="clay-switch clay-switch--deadline">
+                <input type="checkbox" id="hideExpired" class="clay-switch-input" />
+                <span class="clay-switch-track" aria-hidden="true"
+                  ><span class="clay-switch-thumb"></span></span>
+                <span class="clay-switch-text">
+                  <span class="clay-switch-kicker">截止</span>
+                  <span class="clay-switch-title">只看未截止</span>
+                  <span class="clay-switch-sub">隐藏已过截止日期的赛事</span>
+                </span>
+              </label>
+              <label class="clay-switch clay-switch--fav">
+                <input type="checkbox" id="favOnly" class="clay-switch-input" />
+                <span class="clay-switch-track" aria-hidden="true"
+                  ><span class="clay-switch-thumb"></span></span>
+                <span class="clay-switch-text">
+                  <span class="clay-switch-kicker">收藏</span>
+                  <span class="clay-switch-title">只看已收藏</span>
+                  <span class="clay-switch-sub">仅显示点了 ♥ 的比赛</span>
+                </span>
+              </label>
+            </div>
           </div>
           <p id="type-hint" class="toolbar-hint">
             类型已合并为 6 大类；鼠标悬停卡片上的紫色类型标签可查看原始分类。收藏保存在本机浏览器，清除站点数据会丢失。
