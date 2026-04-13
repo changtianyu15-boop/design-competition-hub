@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Nunito:wght@700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -1146,6 +1146,257 @@
         .nav-actions .btn-clay {
           flex: 1;
           min-width: calc(50% - 0.35rem);
+        }
+      }
+
+      /* ===== Minimalist Monochrome Overwrite ===== */
+      :root {
+        --background: #ffffff;
+        --foreground: #000000;
+        --muted: #f5f5f5;
+        --muted-foreground: #525252;
+        --border: #000000;
+        --border-light: #e5e5e5;
+        --font-display: "Playfair Display", Georgia, serif;
+        --font-body: "Source Serif 4", Georgia, serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+
+      .clay-blobs {
+        display: none;
+      }
+
+      * {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+
+      body {
+        background: var(--background) !important;
+        color: var(--foreground) !important;
+        font-family: var(--font-body) !important;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 1px,
+          #000 1px,
+          #000 2px
+        );
+        background-size: 100% 4px;
+        opacity: 0.015;
+        z-index: 0;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav,
+      .hero-panel,
+      .toolbar-panel,
+      .site-footer-card,
+      .trash-panel,
+      .stat,
+      .card {
+        background: #fff !important;
+        border: 1px solid var(--border) !important;
+      }
+
+      .brand-mark,
+      .brand-title,
+      .section-label,
+      .hero h1,
+      .card h2,
+      .trash-title {
+        font-family: var(--font-display) !important;
+        color: #000 !important;
+      }
+
+      .section-label {
+        font-size: 0.72rem !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        border-top: 4px solid #000;
+        padding-top: 0.9rem;
+        margin-top: 1.5rem !important;
+      }
+
+      .hero-panel {
+        padding: 2.25rem !important;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 12vw, 8rem) !important;
+        line-height: 0.95 !important;
+        letter-spacing: -0.04em !important;
+        text-transform: uppercase;
+      }
+
+      .hero h1::after {
+        content: "";
+        display: block;
+        margin-top: 1rem;
+        width: 120px;
+        height: 8px;
+        background: #000;
+      }
+
+      .hero-lead {
+        max-width: 72ch;
+        font-size: 1.08rem !important;
+        color: #111 !important;
+      }
+
+      .stats {
+        background: #000;
+        border: 2px solid #000;
+        padding: 1rem;
+        background-image: repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 1px,
+          #fff 1px,
+          #fff 2px
+        );
+        background-size: 4px 100%;
+        background-blend-mode: soft-light;
+      }
+
+      .stat {
+        background: transparent !important;
+        border: 1px solid #fff !important;
+        color: #fff !important;
+      }
+
+      .stat label,
+      .stat strong {
+        color: #fff !important;
+      }
+
+      .toolbar input,
+      .toolbar select {
+        border: 2px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+        min-height: 52px;
+      }
+
+      .toolbar input:focus,
+      .toolbar select:focus {
+        outline: 3px solid #000 !important;
+        outline-offset: 2px;
+      }
+
+      .btn-clay {
+        background: #000 !important;
+        color: #fff !important;
+        border: 2px solid #000 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-family: var(--font-mono) !important;
+        font-size: 0.75rem !important;
+        transition: none !important;
+      }
+
+      .btn-clay:hover {
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      .btn-clay:focus-visible,
+      .favorite-btn:focus-visible,
+      .delete-btn:focus-visible,
+      .btn-mini:focus-visible,
+      .clay-switch-input:focus-visible + .clay-switch-track {
+        outline: 3px solid #000 !important;
+        outline-offset: 3px !important;
+      }
+
+      .card {
+        border: 2px solid #000 !important;
+        background: #fff !important;
+        transition: none !important;
+      }
+
+      .card:hover {
+        background: #000 !important;
+        color: #fff !important;
+      }
+
+      .card:hover h2,
+      .card:hover p,
+      .card:hover .meta,
+      .card:hover a.link {
+        color: #fff !important;
+      }
+
+      .tag {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      .favorite-btn,
+      .delete-btn,
+      .btn-mini {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+
+      .favorite-btn.is-on {
+        background: #000 !important;
+        color: #fff !important;
+      }
+
+      .clay-switch {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+      }
+
+      .clay-switch-track {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+      }
+
+      .clay-switch-thumb {
+        background: #000 !important;
+      }
+
+      .clay-switch-input:checked + .clay-switch-track {
+        background: #000 !important;
+      }
+
+      .clay-switch-input:checked + .clay-switch-track .clay-switch-thumb {
+        background: #fff !important;
+      }
+
+      .data-updated-chip {
+        border: 2px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+        font-family: var(--font-mono) !important;
+      }
+
+      .toolbar-hint,
+      .meta,
+      .trash-item-meta,
+      .site-footer-inner {
+        color: var(--muted-foreground) !important;
+      }
+
+      @media (max-width: 900px) {
+        .hero h1 {
+          font-size: clamp(2.4rem, 14vw, 5rem) !important;
         }
       }
     </style>
