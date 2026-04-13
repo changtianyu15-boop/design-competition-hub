@@ -312,52 +312,52 @@
     "fetched_at": "2026-04-12 09:35 UTC"
   },
   {
-    "title": "Red Dot Award: Product Design",
-    "competition_type": "产品设计",
-    "deadline": "2026-05-15",
-    "source_name": "策展库",
+    "title": "Red Dot Award",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.red-dot.org/",
-    "description": "德国红点奖旗下的产品设计竞赛单元，面向已上市或即将上市的产品；日程与组别以官网当年简章为准。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Red Dot GmbH",
     "region": "国际",
-    "prize": "红点产品设计奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "A' Design Award & Competition",
     "competition_type": "综合设计",
-    "deadline": "2027-02-28",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://competition.adesignaward.com/",
-    "description": "意大利主办的综合性设计竞赛，分建筑、室内、产品、图形等多个子类报名。",
-    "organizer": "OMDESIGN",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "A' Design Award",
     "region": "国际",
-    "prize": "年度设计奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "全国大学生广告艺术大赛",
     "competition_type": "广告 / 视觉传达",
-    "deadline": "2026-06-15",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "http://www.sun-ada.net/",
-    "description": "国内高校参与面较广的大学生广告与艺术设计竞赛，通称「大广赛」。",
-    "organizer": "全国大学生广告艺术大赛组委会",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "大广赛组委会",
     "region": "中国",
-    "prize": "等级奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
-    "title": "iF DESIGN AWARD",
+    "title": "iF Design Award",
     "competition_type": "综合设计",
-    "deadline": "2026-11-06",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://ifdesign.com/",
-    "description": "汉诺威 iF 设计奖，覆盖产品、包装、传达、室内与用户体验等多个专业类别。",
-    "organizer": "iF International Forum Design GmbH",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "iF International Forum Design",
     "region": "国际",
-    "prize": "iF 设计奖 / 金奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "站酷奖",
@@ -588,16 +588,16 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "TDC 字体设计竞赛（Type Directors Club）",
+    "title": "Type Directors Club (TDC)",
     "competition_type": "字体 / 排版",
-    "deadline": "2026-11-20",
-    "source_name": "未截止补充库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.tdc.org/competition/",
-    "description": "面向字体、排版与字形应用的国际竞赛。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Type Directors Club",
     "region": "国际",
-    "prize": "TDC 奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "Communication Arts 年度设计 / 插画征集",
@@ -662,14 +662,14 @@
   {
     "title": "DNA Paris Design Awards",
     "competition_type": "综合设计",
-    "deadline": "2027-02-05",
-    "source_name": "未截止补充库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://dna.paris/",
-    "description": "巴黎设计奖，覆盖建筑、室内、产品与视觉等类别。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "DNA Paris",
     "region": "国际",
-    "prize": "DNA Winner",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "LIT Lighting Design Awards",
@@ -720,16 +720,16 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "Service Design Award（全球服务设计联盟）",
+    "title": "SDN Service Design Award",
     "competition_type": "服务设计",
-    "deadline": "2027-03-15",
-    "source_name": "未截止补充库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.service-design-network.org/awards",
-    "description": "服务设计网络（SDN）体系下的案例类奖项。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Service Design Network",
     "region": "国际",
-    "prize": "服务设计奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "中国大学生原创动漫大赛",
@@ -902,14 +902,14 @@
   {
     "title": "Asia Design Prize",
     "competition_type": "综合设计",
-    "deadline": "2027-01-18",
-    "source_name": "未截止补充库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.asiadesignprize.com/",
-    "description": "亚洲范围产品与传达等综合类奖项。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Asia Design Prize",
     "region": "国际",
-    "prize": "年度设计奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "Singapore Good Design（年度新一轮）",
@@ -937,15 +937,15 @@
   },
   {
     "title": "未来设计师·全国高校数字艺术设计大赛（NCDA）",
-    "competition_type": "数字艺术 / 动画 / UI / 交互",
-    "deadline": "2026-06-20",
-    "source_name": "中国大陆策展库",
+    "competition_type": "数字媒体",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.ncda.org.cn/",
-    "description": "高校数字艺术领域常见赛事之一，赛道覆盖动画、交互、UI、环境艺术与产品设计等；具体组别与截稿以当届官网通知为准。",
-    "organizer": "NCDA 组委会等",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "NCDA组委会",
     "region": "中国",
-    "prize": "国赛等级奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "中国大学生广告艺术节学院奖",
@@ -1033,15 +1033,15 @@
   },
   {
     "title": "中国包装创意设计大赛",
-    "competition_type": "包装 / 品牌 / 结构",
-    "deadline": "2026-07-12",
-    "source_name": "中国大陆策展库",
+    "competition_type": "包装设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "http://www.pack.org.cn/",
-    "description": "中国包装联合会体系下的包装与品牌创意类征集。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "中国包装联合会等",
     "region": "中国",
-    "prize": "等级奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "中国高等院校设计艺术大赛",
@@ -1081,15 +1081,15 @@
   },
   {
     "title": "北京国际设计周",
-    "competition_type": "综合设计 / 文创",
-    "deadline": "2026-09-20",
-    "source_name": "中国大陆策展库",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "http://www.bjdw.org/",
-    "description": "北京设计周主体活动与配套征集、展览及评选；具体项目以组委会年度发布为准。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "北京国际设计周组委会",
     "region": "中国",
-    "prize": "经典设计奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "中国研究生智慧城市技术与创意设计大赛",
@@ -1586,14 +1586,14 @@
   {
     "title": "IDEA (International Design Excellence Awards)",
     "competition_type": "工业设计",
-    "deadline": "2026-09-01",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.idsa.org/IDEA",
-    "description": "美国工业设计师协会（IDSA）主办的工业设计卓越奖，含产品、交互与可持续等类别。",
-    "organizer": "Industrial Designers Society of America",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "IDSA",
     "region": "国际",
-    "prize": "金 / 银 / 铜奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "European Design Awards",
@@ -1646,50 +1646,50 @@
   {
     "title": "Core77 Design Awards",
     "competition_type": "综合设计",
-    "deadline": "2026-05-05",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://designawards.core77.com/",
-    "description": "设计媒体 Core77 主办的年度奖，含产品、交互、视觉与策略等类别。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Core77",
     "region": "国际",
-    "prize": "专业组与学生组奖项",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "Spark Design Awards",
     "competition_type": "综合设计",
-    "deadline": "2026-10-10",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.sparkawards.com/",
-    "description": "强调创新与社会影响的产品与体验类设计奖。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Spark",
     "region": "国际",
-    "prize": "Spark 奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
-    "title": "UX Design Awards",
-    "competition_type": "UX / 数字产品",
-    "deadline": "2026-05-31",
-    "source_name": "策展库",
+    "title": "UXDA International User Experience Innovation Awards",
+    "competition_type": "UX / 用户体验",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.ux-design-awards.com/",
-    "description": "由柏林国际设计中心支持的体验设计类奖项，面向数字产品与服务。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "International Design Center Berlin",
     "region": "国际",
-    "prize": "金奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "German Design Award",
     "competition_type": "综合设计",
-    "deadline": "2026-11-01",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.german-design-award.com/",
-    "description": "德国设计委员会主办的国家级设计表彰，分产品与传达等门类。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "German Design Council",
     "region": "国际",
-    "prize": "金奖 / 优胜奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "Good Design Award (Chicago Athenaeum)",
@@ -1716,16 +1716,16 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "Golden Pin Design Award",
+    "title": "Golden Pin Design Award（金点设计奖）",
     "competition_type": "综合设计",
-    "deadline": "2026-06-30",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.goldenpin.org.tw/",
-    "description": "在台湾举办的金点设计奖，面向华文市场创意与产业设计作品。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "台湾设计研究院",
     "region": "中国",
-    "prize": "金点奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "Singapore Good Design",
@@ -1740,16 +1740,16 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "MUSE Creative / Design Awards",
-    "competition_type": "视觉 / 空间",
-    "deadline": "2026-10-24",
-    "source_name": "策展库",
+    "title": "MUSE Design Awards",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://design.museaward.com/",
-    "description": "由 IAA 主办的缪斯设计奖，含平面、包装、室内与体验等类别。",
-    "organizer": "International Awards Associate",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "IAA",
     "region": "国际",
-    "prize": "铂 / 金 / 银",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "NY Product Design Awards",
@@ -1788,28 +1788,28 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "The One Show",
+    "title": "The One Show Awards",
     "competition_type": "广告创意",
-    "deadline": "2026-03-20",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.oneclub.org/awards/theoneshow/",
-    "description": "The One Club 主办的全球广告与品牌创意奖。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "The One Club for Creativity",
     "region": "国际",
-    "prize": "金铅笔等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "ADC Annual Awards",
-    "competition_type": "工艺 / 设计",
-    "deadline": "2026-03-01",
-    "source_name": "策展库",
+    "competition_type": "广告 / 创意",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.oneclub.org/awards/adcawards/",
-    "description": "纽约艺术指导俱乐部（ADC）年度奖，强调工艺、设计与影像。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "The One Club for Creativity",
     "region": "国际",
-    "prize": "立方体奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "The Webby Awards",
@@ -1825,51 +1825,51 @@
   },
   {
     "title": "中国好创意暨全国数字艺术设计大赛",
-    "competition_type": "数字艺术 / 设计",
-    "deadline": "2026-06-30",
-    "source_name": "策展库",
+    "competition_type": "数字媒体",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.cdec.org.cn/",
-    "description": "面向高校与专业领域的数字艺术、动画与交互等类别竞赛。",
-    "organizer": "中国好创意暨全国数字艺术设计大赛组委会",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "中国好创意大赛组委会",
     "region": "中国",
-    "prize": "国赛等级奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "白金创意国际大学生平面设计大赛",
     "competition_type": "平面设计",
-    "deadline": "2026-11-20",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.platinumaward.org/",
-    "description": "中国美术学院发起、面向全球大学生的平面设计赛事。",
-    "organizer": "中国美术学院",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "中国美术学院等",
     "region": "中国",
-    "prize": "全场大奖 / 金奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "靳埭强设计奖",
     "competition_type": "平面设计",
-    "deadline": "2026-10-08",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "http://www.ktkdesignaward.org/",
-    "description": "以靳埭强先生命名的设计奖，面向华人青年与学生的平面设计作品。",
-    "organizer": "汕头大学等",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "靳埭强设计奖组委会",
     "region": "中国",
-    "prize": "全场大奖 / 金奖等",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "GDC Award（平面设计在中国）",
     "competition_type": "平面设计",
-    "deadline": "2026-09-30",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.gdc-award.com/",
-    "description": "深圳市平面设计协会主办的华人平面与视觉设计展评活动。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "深圳市平面设计协会",
     "region": "中国",
-    "prize": "最佳奖 / 提名奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "中国之星设计奖",
@@ -1981,27 +1981,27 @@
   },
   {
     "title": "International Design Awards (IDA)",
-    "competition_type": "建筑 / 室内 / 产品",
-    "deadline": "2026-11-15",
-    "source_name": "策展库",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://idesignawards.com/",
-    "description": "Farmani 集团主办的国际设计奖，含建筑、室内、产品与时尚等类别。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "Farmani Group",
     "region": "国际",
-    "prize": "年度类别奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
-    "title": "London International Creative Competition (LICC)",
+    "title": "London International Creative Competition",
     "competition_type": "综合创意",
-    "deadline": "2026-12-05",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://licc.uk/",
-    "description": "在伦敦举办的国际创意大赛，含视觉艺术与建筑等门类。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "LICC",
     "region": "国际",
-    "prize": "专业与学生组奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "World Brand Design Society Awards",
@@ -2016,16 +2016,16 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "C-IDEA 设计奖",
+    "title": "C-IDEA Design Award",
     "competition_type": "综合设计",
-    "deadline": "2026-08-01",
-    "source_name": "策展库",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://www.c-idea.org/",
-    "description": "面向亚太地区征集的综合性设计奖。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "C-IDEA",
     "region": "国际",
-    "prize": "大奖 / 金奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "意大利 A' Design（建筑类入口示例）",
@@ -2196,16 +2196,16 @@
     "fetched_at": "2026-04-13 05:35 UTC"
   },
   {
-    "title": "中国研究生「双碳」创新与创意大赛",
-    "competition_type": "可持续 / 产品创新",
-    "deadline": "2026-10-01",
-    "source_name": "中国大陆策展库",
+    "title": "中国研究生智慧城市技术与创意设计大赛",
+    "competition_type": "数字媒体",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://cpipc.acge.org.cn/",
-    "description": "研究生创新实践系列赛事之一，面向节能降碳与绿色技术相关创新作品。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "中国学位与研究生教育学会",
     "region": "中国",
-    "prize": "全国奖",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "中国人居环境设计学年奖",
@@ -2269,15 +2269,15 @@
   },
   {
     "title": "米兰设计周—中国高校设计学科师生优秀作品展",
-    "competition_type": "综合设计 / 展览入选",
-    "deadline": "2026-03-15",
-    "source_name": "中国大陆策展库",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
     "source_url": "https://milan-aap.org.cn/",
-    "description": "高校师生设计作品征集与评选，优秀者可参与米兰设计周相关展览与交流；赛道含命题与非命题等。",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
     "organizer": "中国教育国际交流协会等",
     "region": "中国",
-    "prize": "入选展览 / 奖项",
-    "fetched_at": "2026-04-13 05:35 UTC"
+    "prize": "见官网",
+    "fetched_at": "manual"
   },
   {
     "title": "全国职业院校技能大赛",
@@ -2698,5 +2698,269 @@
     "region": "中国",
     "prize": "见原文",
     "fetched_at": "2026-04-13 05:35 UTC"
+  },
+  {
+    "title": "FA International Frontier Innovation Art Design Awards",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.foundawards.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "FA Awards",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "ICAD International Contemporary Youth Art Design Competition",
+    "competition_type": "视觉 / 艺术设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.icadaward.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "ICAD",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "D&AD New Blood Awards",
+    "competition_type": "广告 / 创意",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.dandad.org/en/d-ad-new-blood-awards/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "D&AD",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "Award 360° Annual Design Awards",
+    "competition_type": "平面设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://award360.cn/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Award360",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "London International Awards (LIA)",
+    "competition_type": "广告 / 创意",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.liaawards.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "London International Awards",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "Dezeen Awards",
+    "competition_type": "建筑 / 设计媒体奖",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.dezeen.com/awards/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Dezeen",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "ICONIC Awards: Innovative Architecture",
+    "competition_type": "建筑 / 室内",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.iconic-world.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "German Design Council",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "Good Design Award",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.good-design.org/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Good Design",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "DBA Design Effectiveness Awards",
+    "competition_type": "品牌 / 商业设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.dba.org.uk/awards/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Design Business Association",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "Design Week Awards",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.designweekawards.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Design Week",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "C2A Creative Communication Award",
+    "competition_type": "视觉传达",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.c2award.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Creative Communication Award",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "Green GOOD DESIGN",
+    "competition_type": "可持续设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.good-design.org/green-good-design/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "The Chicago Athenaeum",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "AZ Awards",
+    "competition_type": "建筑 / 室内 / 产品",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://azawards.azuredesign.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Azure Magazine",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "Design for Asia Awards",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://dfaa.dfaawards.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "Hong Kong Design Centre",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "SBID International Design Awards",
+    "competition_type": "室内 / 产品",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.sbidawards.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "SBID",
+    "region": "国际",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "全国海洋航行器设计与制作大赛",
+    "competition_type": "产品与工业",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.cmsonline.com.cn/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "相关高校与行业机构",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "东方创意之星设计大赛",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.5iidea.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "东方创意之星组委会",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "华夏奖两岸非遗文创设计大赛",
+    "competition_type": "文创 / 非遗",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.huaxiaaward.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "华夏奖组委会",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "红棉设计奖",
+    "competition_type": "产品设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.designaward.com.cn/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "红棉奖组委会",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "澳门设计双年展",
+    "competition_type": "视觉传达",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.icm.gov.mo/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "澳门相关机构",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "上海设计双年展",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.powerstationofart.com/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "上海当代艺术博物馆等",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
+  },
+  {
+    "title": "新丝路-NEW IDEA国际工业设计大赛",
+    "competition_type": "工业设计",
+    "deadline": "见官网",
+    "source_name": "CSC认定名单",
+    "source_url": "https://www.new-idea-design.org/",
+    "description": "来自《设计类竞赛项目认定名单（中德项目CSC评选）》。",
+    "organizer": "NEW IDEA组委会",
+    "region": "中国",
+    "prize": "见官网",
+    "fetched_at": "manual"
   }
 ]

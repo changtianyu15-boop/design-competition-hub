@@ -1173,6 +1173,7 @@
       const sortBy = document.getElementById("sortBy");
       const hideExpired = document.getElementById("hideExpired");
       const favOnly = document.getElementById("favOnly");
+      const isLocalRuntime = ["localhost", "127.0.0.1"].includes(location.hostname);
 
       let all = [];
 
@@ -1225,6 +1226,15 @@
           return `${root}/${p}`;
         }
         return new URL(relPath, location.href).href;
+      }
+
+      if (!isLocalRuntime) {
+        // 线上仅展示与筛选，爬取在本地执行后再同步到线上。
+        btnCrawl.disabled = true;
+        btnCrawl.title = "线上已禁用爬取，请在本地运行后上传数据";
+        crawlLabel.textContent = "仅本地爬取";
+        btnCrawl.style.opacity = "0.55";
+        btnCrawl.style.cursor = "not-allowed";
       }
 
       /** 将数据源中的长类型名归并为少量大类，便于筛选与阅读 */
@@ -1644,6 +1654,10 @@
       });
 
       btnCrawl.addEventListener("click", async () => {
+        if (!isLocalRuntime) {
+          showToast("线上已禁用爬取：请在本地运行 python main.py 爬取后再上传到线上。");
+          return;
+        }
         btnCrawl.disabled = true;
         crawlLabel.innerHTML = '<span class="spinner"></span> 抓取中…';
         try {
@@ -1656,7 +1670,7 @@
           const msg = e.message || String(e);
           const hint =
             msg === "Failed to fetch" || msg.includes("404")
-              ? "静态网站无法执行爬取。请在本地运行 python main.py，点击「重新爬取」更新 data/competitions.json 后重新部署。"
+              ? "静态网站无法执行爬取。请在本地运行 python main.py，点击「重新爬取」更新 data/competitions.json 后再上传。"
               : msg;
           showToast("失败：" + hint);
         } finally {
