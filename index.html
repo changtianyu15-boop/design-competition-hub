@@ -1442,7 +1442,7 @@
       if (isLocalRuntime) {
         dataUpdated.hidden = true;
       } else {
-        btnCrawl.hidden = true;
+        btnCrawl.remove();
       }
 
       /** 将数据源中的长类型名归并为少量大类，便于筛选与阅读 */
@@ -1987,7 +1987,7 @@
         downloadCompetitionsCsv();
       });
 
-      btnCrawl.addEventListener("click", async () => {
+      if (btnCrawl) btnCrawl.addEventListener("click", async () => {
         btnCrawl.disabled = true;
         crawlLabel.innerHTML = '<span class="spinner"></span> 抓取中…';
         try {
