@@ -1133,10 +1133,20 @@
                   <span class="clay-switch-sub">仅显示点了 ♥ 的比赛</span>
                 </span>
               </label>
+              <label class="clay-switch clay-switch--deadline">
+                <input type="checkbox" id="moeAOnly" class="clay-switch-input" />
+                <span class="clay-switch-track" aria-hidden="true"
+                  ><span class="clay-switch-thumb"></span></span>
+                <span class="clay-switch-text">
+                  <span class="clay-switch-kicker">A类</span>
+                  <span class="clay-switch-title">仅看教育部A类</span>
+                  <span class="clay-switch-sub">并在排序中优先展示A类竞赛</span>
+                </span>
+              </label>
             </div>
           </div>
           <p id="type-hint" class="toolbar-hint">
-            类型已合并为 6 大类；鼠标悬停卡片上的紫色类型标签可查看原始分类。收藏保存在本机浏览器，清除站点数据会丢失。
+            类型已合并为 6 大类；鼠标悬停卡片上的紫色类型标签可查看原始分类。收藏保存在本机浏览器，清除站点数据会丢失。A类依据高校常用竞赛目录关键赛事自动识别。
           </p>
         </div>
 
@@ -1173,6 +1183,7 @@
       const sortBy = document.getElementById("sortBy");
       const hideExpired = document.getElementById("hideExpired");
       const favOnly = document.getElementById("favOnly");
+      const moeAOnly = document.getElementById("moeAOnly");
       const isLocalRuntime = ["localhost", "127.0.0.1"].includes(location.hostname);
 
       let all = [];
@@ -1382,6 +1393,29 @@
         return d != null && d < 0;
       }
 
+      // 依据中国高等教育学会竞赛目录中常见设计类A类赛事关键词进行自动识别。
+      function isMoeAClassCompetition(x) {
+        const text = `${x.title || ""} ${x.source_name || ""}`.toLowerCase();
+        const rules = [
+          "全国大学生广告艺术大赛",
+          "中国大学生广告艺术节学院奖",
+          "两岸新锐设计竞赛",
+          "华灿奖",
+          "米兰设计周",
+          "未来设计师",
+          "ncda",
+          "全国高校数字艺术设计大赛",
+          "全国大学生工业设计大赛",
+          "中国好创意",
+          "全国数字艺术设计大赛",
+          "全国三维数字化创新设计大赛",
+          "全国高校bim毕业设计创新大赛",
+          "全国大学生花园设计建造竞赛",
+          "全国数字建筑创新应用大赛",
+        ];
+        return rules.some((k) => text.includes(k.toLowerCase()));
+      }
+
       function deadlineTag(ts) {
         const d = daysUntil(ts);
         if (d == null)
@@ -1443,6 +1477,7 @@
         let list = all.filter((x) => {
           if (hideExpired.checked && isExpiredItem(x)) return false;
           if (favOnly.checked && !favSet.has(itemKey(x))) return false;
+          if (moeAOnly.checked && !isMoeAClassCompetition(x)) return false;
           if (t && simpleCompetitionType(x.competition_type) !== t) return false;
           if (r && x.region !== r) return false;
           if (!term) return true;
@@ -1452,6 +1487,9 @@
         const sort = sortBy.value;
         list = [...list].sort((a, b) => {
           if (sort === "title") return a.title.localeCompare(b.title, "zh-CN");
+          const aA = isMoeAClassCompetition(a);
+          const bA = isMoeAClassCompetition(b);
+          if (aA !== bA) return aA ? -1 : 1;
           const ea = isExpiredItem(a);
           const eb = isExpiredItem(b);
           if (ea !== eb) return ea ? 1 : -1;
@@ -1484,6 +1522,7 @@
             <div class="tags">
               <span class="tag type"></span>
               <span class="deadline-tag"></span>
+              ${isMoeAClassCompetition(x) ? '<span class="tag type">教育部A类</span>' : ""}
               <span class="tag">${escapeHtml(x.source_name || "")}</span>
             </div>
             <h2></h2>
@@ -1686,6 +1725,7 @@
         sortBy.addEventListener(ev, render);
         hideExpired.addEventListener(ev, render);
         favOnly.addEventListener(ev, render);
+        moeAOnly.addEventListener(ev, render);
       });
 
       load().catch((e) => {
