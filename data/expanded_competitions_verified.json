@@ -1,0 +1,167 @@
+[
+  {
+    "title": "BraunPrize",
+    "competition_type": "产品设计 / 创新",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.braunprize.com/",
+    "description": "Braun 发起的国际设计竞赛，面向学生与青年设计师，关注产品创新与社会价值。",
+    "organizer": "Braun",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "Andreu World International Design Contest",
+    "competition_type": "家具 / 产品设计",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.andreuworld.com/internationaldesigncontest/",
+    "description": "西班牙 Andreu World 面向全球设计师的家具设计竞赛。",
+    "organizer": "Andreu World",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "Architecture MasterPrize (AMP)",
+    "competition_type": "建筑 / 室内 / 景观",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://architectureprize.com/",
+    "description": "国际建筑奖项，覆盖建筑、室内、景观与建筑摄影等类别。",
+    "organizer": "Farmani Group",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "BLT Built Design Awards",
+    "competition_type": "建筑 / 室内 / 产品",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://bltawards.com/",
+    "description": "面向建筑环境与建成空间的国际奖项，含建筑、室内与产品方向。",
+    "organizer": "3C Awards",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "LOOP Design Awards",
+    "competition_type": "建筑 / 室内 / 景观 / 产品",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://loopdesignawards.com/",
+    "description": "葡萄牙发起的国际设计奖，涵盖建筑、室内、景观与产品等门类。",
+    "organizer": "LOOP Design Awards",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "World Architecture Community Awards",
+    "competition_type": "建筑",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://worldarchitecture.org/awards/",
+    "description": "WAC 面向全球建筑师与事务所的项目评选体系。",
+    "organizer": "World Architecture Community",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "The Plan Award",
+    "competition_type": "建筑 / 室内",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.theplan.it/award",
+    "description": "意大利《THE PLAN》杂志举办的建筑与室内项目奖项。",
+    "organizer": "The Plan",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "eVolo Skyscraper Competition",
+    "competition_type": "概念建筑",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.evolo.us/category/competition/",
+    "description": "关注高层与未来城市的概念建筑竞赛。",
+    "organizer": "eVolo Magazine",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "YAC - Young Architects Competitions",
+    "competition_type": "建筑竞赛平台",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.youngarchitectscompetitions.com/",
+    "description": "持续发布国际建筑概念竞赛与合作赛题的平台。",
+    "organizer": "YAC",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "Buildner Architecture Competitions",
+    "competition_type": "建筑竞赛平台",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://architecturecompetitions.com/",
+    "description": "原 Bee Breeders，面向建筑与城市议题的长期竞赛平台。",
+    "organizer": "Buildner",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "Archstorming Competitions",
+    "competition_type": "社会创新 / 建筑",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.archstorming.com/",
+    "description": "以社会议题为导向的国际建筑与规划竞赛平台。",
+    "organizer": "Archstorming",
+    "region": "国际",
+    "prize": "见官网"
+  },
+  {
+    "title": "Awwwards",
+    "competition_type": "网页 / 数字体验",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.awwwards.com/",
+    "description": "全球网页与数字体验类评审平台与奖项体系。",
+    "organizer": "Awwwards",
+    "region": "国际",
+    "prize": "SOTD / SOTM / SOTY"
+  },
+  {
+    "title": "CSS Design Awards",
+    "competition_type": "网页 / 数字设计",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.cssdesignawards.com/",
+    "description": "网站、UI 与交互方向的国际在线奖项平台。",
+    "organizer": "CSS Design Awards",
+    "region": "国际",
+    "prize": "WOTD / DOTY"
+  },
+  {
+    "title": "DFA Hong Kong Young Design Talent Award",
+    "competition_type": "青年设计 / 奖学支持",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://www.dfaawards.com/en/award/young-design-talent-award/",
+    "description": "香港设计中心面向青年设计人才的年度奖项计划。",
+    "organizer": "Hong Kong Design Centre",
+    "region": "中国",
+    "prize": "奖学金与资助"
+  },
+  {
+    "title": "DFA Design for Asia Awards",
+    "competition_type": "综合设计",
+    "deadline": "见官网",
+    "source_name": "国际奖项核验补充库",
+    "source_url": "https://dfaa.dfaawards.com/",
+    "description": "香港设计中心举办的亚洲影响力设计奖项。",
+    "organizer": "Hong Kong Design Centre",
+    "region": "国际",
+    "prize": "大奖 / 金奖等"
+  }
+]

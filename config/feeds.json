@@ -108,6 +108,42 @@
       "url": "https://designtaxi.com/feed/",
       "keyword_filter": ["design", "award", "competition", "contest"],
       "region": "国际"
+    },
+    {
+      "name": "The Dieline",
+      "url": "https://thedieline.com/feed",
+      "keyword_filter": ["design", "award", "competition", "packaging", "winner"],
+      "region": "国际"
+    },
+    {
+      "name": "Dexigner",
+      "url": "https://www.dexigner.com/news/rss.xml",
+      "keyword_filter": ["design", "award", "competition", "contest", "call for entries"],
+      "region": "国际"
+    },
+    {
+      "name": "Domus",
+      "url": "https://www.domusweb.it/en/rss.xml",
+      "keyword_filter": ["design", "award", "competition", "architecture"],
+      "region": "国际"
+    },
+    {
+      "name": "World Architecture Community",
+      "url": "https://worldarchitecture.org/rss/news.xml",
+      "keyword_filter": ["competition", "award", "architecture", "design"],
+      "region": "国际"
+    },
+    {
+      "name": "Creative Review",
+      "url": "https://www.creativereview.co.uk/feed/",
+      "keyword_filter": ["design", "award", "competition", "creative"],
+      "region": "国际"
+    },
+    {
+      "name": "Frame",
+      "url": "https://www.frameweb.com/rss.xml",
+      "keyword_filter": ["design", "award", "competition", "interior"],
+      "region": "国际"
     }
   ],
   "json_feeds": [
@@ -126,6 +162,10 @@
     {
       "name": "自建比赛列表",
       "path_or_url": "data/custom_competitions.json"
+    },
+    {
+      "name": "国际奖项核验补充库",
+      "path_or_url": "data/expanded_competitions_verified.json"
     }
   ]
 }
