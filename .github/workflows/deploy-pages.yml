@@ -1,6 +1,14 @@
-# 推送到 main 后自动构建并发布到 GitHub Pages。
-# 首次使用：仓库 Settings → Pages → Build and deployment → Source 选「GitHub Actions」。
-name: Deploy to GitHub Pages
+# 推送到 main 后：把 static/ 推到 gh-pages 分支（比官方 artifact 流程少踩坑）。
+#
+# 网页端设置（只需一次）：
+#   Settings → Pages → Build and deployment
+#   Source 选「Deploy from a branch」
+#   Branch 选「gh-pages」文件夹选「/ (root)」→ Save
+#
+# 若曾选过「GitHub Actions」作为 Source，请改回「Deploy from a branch」并按上面选择 gh-pages。
+#
+# 看是否成功：仓库顶部 Actions 标签 → 点开「Deploy GitHub Pages」→ 应为绿色对勾。
+name: Deploy GitHub Pages
 
 on:
   push:
@@ -8,34 +16,31 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Copy competitions.json into static/
         run: python scripts/prep_netlify_static.py
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: static
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: List static output (debug)
+        run: ls -la static && test -f static/index.html && test -f static/competitions.json
+
+      - name: Push static site to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: static
+          branch: gh-pages
+          clean: true
