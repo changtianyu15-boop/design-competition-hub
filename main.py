@@ -69,6 +69,18 @@ class RequestHandler(BaseHTTPRequestHandler):
             self._send_bytes(200, payload, "application/json; charset=utf-8")
             return
 
+        if req_path == "/competitions.json":
+            fp = STATIC / "competitions.json"
+            if fp.exists():
+                self._send_bytes(
+                    200,
+                    fp.read_bytes(),
+                    "application/json; charset=utf-8",
+                )
+                return
+            self._send_bytes(404, b"{}", "application/json; charset=utf-8")
+            return
+
         if req_path == "/api/download/excel":
             from export_excel import competitions_to_excel
             from storage import load_competitions

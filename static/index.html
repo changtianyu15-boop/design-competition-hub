@@ -938,6 +938,11 @@
 
       let all = [];
 
+      /** 相对当前页面解析 URL，兼容 GitHub Pages 子路径与 Netlify 根路径 */
+      function appUrl(relPath) {
+        return new URL(relPath, location.href).href;
+      }
+
       /** 将数据源中的长类型名归并为少量大类，便于筛选与阅读 */
       function simpleCompetitionType(raw) {
         const s = (raw || "").trim();
@@ -1269,9 +1274,9 @@
       }
 
       async function load() {
-        let res = await fetch("/api/competitions").catch(() => null);
+        let res = await fetch(appUrl("api/competitions")).catch(() => null);
         if (!res || !res.ok) {
-          res = await fetch("/competitions.json");
+          res = await fetch(appUrl("competitions.json"));
           if (!res.ok) throw new Error("无法加载比赛数据");
         }
         all = await res.json();
@@ -1282,7 +1287,7 @@
 
       btnDl.addEventListener("click", async () => {
         try {
-          const res = await fetch("/api/download/excel");
+          const res = await fetch(appUrl("api/download/excel"));
           if (res.ok) {
             const blob = await res.blob();
             const url = URL.createObjectURL(blob);
@@ -1304,7 +1309,7 @@
         btnCrawl.disabled = true;
         crawlLabel.innerHTML = '<span class="spinner"></span> 抓取中…';
         try {
-          const res = await fetch("/api/crawl", { method: "POST" });
+          const res = await fetch(appUrl("api/crawl"), { method: "POST" });
           const data = await res.json().catch(() => ({}));
           if (!res.ok) throw new Error(data.detail || res.statusText);
           showToast(`完成：共 ${data.count} 条（已写入 Excel）`);
